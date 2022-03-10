@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Jinops.iml" filepath="$PROJECT_DIR$/.idea/Jinops.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/parent/common/common.iml" filepath="$PROJECT_DIR$/backend/parent/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/parent/manager/controller/controller.iml" filepath="$PROJECT_DIR$/backend/parent/manager/controller/controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/parent/manager/manager.iml" filepath="$PROJECT_DIR$/backend/parent/manager/manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/parent/manager/mapper/mapper.iml" filepath="$PROJECT_DIR$/backend/parent/manager/mapper/mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/parent/manager/model/model.iml" filepath="$PROJECT_DIR$/backend/parent/manager/model/model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/parent/parent.iml" filepath="$PROJECT_DIR$/backend/parent/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/parent/manager/service/service.iml" filepath="$PROJECT_DIR$/backend/parent/manager/service/service.iml" />
+    </modules>
+  </component>
+</project>

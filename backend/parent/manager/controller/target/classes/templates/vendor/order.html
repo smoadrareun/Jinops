@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/pintuer.css">
+    <link rel="stylesheet" href="../../static/css/vendor/admin.css">
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/pintuer.js"></script>
+    <script type="text/javascript" src="../../static/js/vendor/index.js"></script>
+</head>
+<body>
+<form method="post" action="" id="listform">
+    <div class="panel admin-panel">
+        <div class="panel-head"><strong class="icon-reorder"> 订单列表</strong>
+            <a href="" style="float:right; display:none;">添加字段</a>
+        </div>
+        <div class="padding border-bottom">
+            <div id="tips"></div>
+            <ul class="search padding-left">
+                <li>
+                    <strong>查询条件：</strong>
+                </li>
+                <li>
+                    日期起止：<input class="button button-little" type="datetime-local"
+                                name="start" style="width:220px;display:inline-block"/>
+                    &nbsp;-&nbsp;<input class="button button-little" type="datetime-local"
+                                        name="end" style="width:220px;display:inline-block"/>
+                </li>
+                <li>
+                    客户姓名：<input type="text" name="sname" class="input margin-little-top"
+                                placeholder="姓名" style="width:80px;display:inline-block"/>
+                </li>
+                <li>
+                    排序方式：
+                    <select name="sort" class="input" style="width:90px;display:inline-block">
+                        <option value="1">时间升序</option>
+                        <option value="2" selected>时间降序</option>
+                        <option value="3">总价升序</option>
+                        <option value="4">总价降序</option>
+                    </select>
+                </li>
+                <li>
+                    每页显示：
+                    <select name="count" class="input" style="width:90px;display:inline-block">
+                        <option value="5">每页5条</option>
+                        <option value="10" selected>每页10条</option>
+                        <option value="15">每页15条</option>
+                        <option value="20">每页20条</option>
+                        <option value="">显示全部</option>
+                    </select>
+                </li>
+                <li>
+                    <button type="button" class="button border-main icon-search" id="query">
+                        查询
+                    </button>
+                    <button type="button" class="button border-dot icon-trash-o" id="clean">
+                        清空
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <table class="table table-hover text-center">
+            <tr>
+                <th>订单号</th>
+                <th>订单时间</th>
+                <th>客户姓名</th>
+                <th>客户电话</th>
+                <th>客户地址</th>
+                <th>订单详情</th>
+                <th>订单总价</th>
+            </tr>
+            <tbody id="vo">
+            </tbody>
+        </table>
+        <div class="padding border-bottom">
+            <ul class="search padding-left padding-top">
+                <input name="page" value="1" hidden="hidden"/>
+                <div class="pagelist" id="pageList">
+
+                </div>
+            </ul>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    $(function () {
+        var success = "<div class=\"form-group animated bounce\">\n" +
+            "                    <div class=\"alert alert-green\">\n" +
+            "                        <span class=\"close rotate-hover\"></span><strong>恭喜：</strong>操作成功。\n" +
+            "                    </div>\n" +
+            "                </div>";
+
+        var failure = "<div class=\"form-group animated bounce\">\n" +
+            "                                            <div class=\"alert alert-yellow\">\n" +
+            "                                                <span class=\"close rotate-hover\"></span><strong>操作失败</strong>\n" +
+            "                                                <p>\n" +
+            "                                                    请重新操作。\n" +
+            "                                                </p>\n" +
+            "                                            </div>";
+
+        var error = "<div class=\"form-group animated bounce\">\n" +
+            "                                            <div class=\"alert alert-red\">\n" +
+            "                                                <span class=\"close rotate-hover\"></span><strong>访问异常</strong>\n" +
+            "                                                <p>\n" +
+            "                                                    请稍后重试。\n" +
+            "                                                </p>\n" +
+            "                                            </div>";
+
+        function getWarning(str) {
+            return "<div class=\"form-group animated bounce\">\n" +
+                "                                            <div class=\"alert alert-yellow\">\n" +
+                "                                                <span class=\"close rotate-hover\"></span><strong>注意：</strong>" + str + "\n" +
+                "                                            </div>\n" +
+                "                                        </div>";
+        }
+
+        function getTips(str) {
+            return "<div class=\"form-group animated bounce\">\n" +
+                "                                            <div class=\"alert alert-blue\">\n" +
+                "                                                <span class=\"close rotate-hover\"></span><strong>提示：</strong>" + str + "\n" +
+                "                                            </div>\n" +
+                "                                        </div>";
+        }
+
+        queryList();
+
+        //搜索
+        function queryList() {
+            var adata = {
+                start: $("input[name='start']").val(),
+                end: $("input[name='end']").val(),
+                sname: $("input[name='sname']").val(),
+                sort: $("select[name='sort']").val(),
+                count: $("select[name='count']").val(),
+                page: $("input[name='page']").val(),
+            };
+            var data = JSON.stringify(adata);
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                data: data,
+                async: false,
+                url: window.location.origin + "/Jinops/order/query",
+                success: function (data) {
+                    if (data.code === 0) {
+                        $("#vo").empty();
+                        for (var i = data.data.order.length - 1; i >= 0; i--) {
+                            var str = "<tr><td> " + getHashCode(data.data.order[i].id) + "</td>\n" +
+                                "                    <td>" + getLocalTime(data.data.order[i].date) + "</td>\n" +
+                                "                    <td> " + data.data.order[i].name + "</td>\n" +
+                                "                    <td> " + data.data.order[i].phone + "</td>\n" +
+                                "                    <td> " + data.data.order[i].address + "</td>\n" +
+                                "                    <td>" + data.data.order[i].comInfo[0].name + "x"+data.data.order[i].comInfo[0].num+"</td>\n" +
+                                "                    <td>" + data.data.order[i].comInfo[0].price.toFixed(2) + "元</td>\n" +
+                                "                </tr>";
+                            $("#vo").prepend(str);
+                        }
+                        $("#pageList").empty();
+                        var str="";
+                        if(data.data.page>1) {
+                            str +=  "<div class=\"button-group\">\n" +
+                                "                <button type=\"button\" class=\"button border-sub\" name=\"firstPage\">\n" +
+                                "                    首页\n" +
+                                "                </button>\n" +
+                                "                <button type=\"button\" class=\"button border-sub\" name=\"prevPage\">\n" +
+                                "                    上一页\n" +
+                                "                </button>\n" +
+                                "           </div>\n";
+                        }else{
+                            str +=  "<div class=\"button-group\">\n" +
+                                "                <button type=\"button\" class=\"button border-sub\"" +
+                                "                       name=\"firstPage\" disabled=\"disabled\">\n" +
+                                "                    首页\n" +
+                                "                </button>\n" +
+                                "                <button type=\"button\" class=\"button border-sub\"" +
+                                "                       name=\"prevPage\" disabled=\"disabled\">\n" +
+                                "                    上一页\n" +
+                                "                </button>\n" +
+                                "           </div>\n";
+                        }
+                        str+= "         <div class=\"button-group\">\n" +
+                            "                <button type=\"button\" class=\"button bg-sub\" name=\"thisPage\">\n" +
+                            "                    <input name=\"page\" hidden=\"hidden\" value='"+data.data.page+"'/>\n" +
+                            "                    <input name=\"totalPage\" hidden=\"hidden\" value='"+data.data.totalPage+"'/>\n" +
+                            "                    第"+data.data.page+"页,共"+data.data.totalPage+"页\n" +
+                            "                </button>\n" +
+                            "           </div>\n";
+                        if(data.data.page<data.data.totalPage){
+                            str+= "         <div class=\"button-group\">\n" +
+                                "                <button type=\"button\" class=\"button border-sub\" name=\"nextPage\">\n" +
+                                "                    下一页\n" +
+                                "                </button>\n" +
+                                "                <button type=\"button\" class=\"button border-sub\" name=\"lastPage\">\n" +
+                                "                    尾页\n" +
+                                "                </button>\n" +
+                                "           </div>\n";
+                        }else{
+                            str+= "         <div class=\"button-group\">\n" +
+                                "                <button type=\"button\" class=\"button border-sub\"" +
+                                "                        name=\"nextPage\" disabled=\"disabled\">\n" +
+                                "                    下一页\n" +
+                                "                </button>\n" +
+                                "                <button type=\"button\" class=\"button border-sub\"" +
+                                "                        name=\"lastPage\" disabled=\"disabled\">\n" +
+                                "                    尾页\n" +
+                                "                </button>\n" +
+                                "           </div>\n";
+                        }
+                        $("#pageList").prepend(str);
+                        $("input[name='page']").val(data.data.page);
+
+                        //跳转到首页
+                        $("button[name='firstPage']").on("click",function (){
+                            $("input[name='page']").val(1);
+                            queryList();
+                        })
+
+                        //跳转到上一页
+                        $("button[name='prevPage']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='page']").val())-1);
+                            queryList();
+                        })
+
+                        //上一页
+                        $("button[name='prev']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='page']").val())-1);
+                            queryList();
+                        })
+
+                        //下一页
+                        $("button[name='next']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='page']").val())+1);
+                            queryList();
+                        })
+
+                        //跳转到下一页
+                        $("button[name='nextPage']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='page']").val())+1);
+                            queryList();
+                        })
+
+                        //跳转到尾页
+                        $("button[name='lastPage']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='totalPage']").val()));
+                            queryList();
+                        })
+
+                    }
+                    if (data.code === -404) {
+                        $("#vo").empty();
+                        $("#pageList").empty();
+                        window.scrollTo('0', '0');
+                        $("#tips").html(getWarning("暂未找到订单数据")).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                    if (data.code === -1) {
+                        window.scrollTo('0', '0');
+                        $("#tips").html(failure).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                    window.scrollTo('0', '0');
+                    $("#tips").html(error).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                }
+            })
+        }
+
+
+        //查询
+        $("#query").click(function () {
+            $("input[name='page']").val(1);
+            queryList(1);
+        })
+
+        //清空
+        $("#clean").click(function () {
+            if (confirm("您确定要清空所有查询的条件吗？")) {
+                $("input[name='start']").val("");
+                $("input[name='end']").val("");
+                $("select[name='sort']").val("2");
+                $("select[name='count']").val("10");
+                queryList(1);
+            }
+        })
+
+        function getLocalTime(nS) {
+            return new Date(parseInt(nS)).toLocaleString().replace(/:\d{1,2}$/,' ');
+        }
+
+        //获取字符串的 哈希值
+        function getHashCode(str){
+            var hash  =   1315423911,i,ch;
+            for (i = str.length - 1; i >= 0; i--) {
+                ch = str.charCodeAt(i);
+                hash ^= ((hash << 5) + ch + (hash >> 2));
+            }
+            if((hash & 0x7FFFFFFF).length > 10) return (hash & 0x7FFFFFFF);
+            return (Array(10).join(0)+(hash & 0x7FFFFFFF)).slice(-10);
+        }
+
+    })
+
+</script>
+</body>
+</html>

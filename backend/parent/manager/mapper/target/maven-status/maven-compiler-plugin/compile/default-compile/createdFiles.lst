@@ -1,0 +1,5 @@
+com\hebeu\mapper\CartMapper.class
+com\hebeu\mapper\OrderMapper.class
+com\hebeu\mapper\VendorMapper.class
+com\hebeu\mapper\GoodsMapper.class
+com\hebeu\mapper\ClientMapper.class

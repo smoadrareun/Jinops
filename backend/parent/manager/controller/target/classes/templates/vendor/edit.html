@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/pintuer.css">
+    <link rel="stylesheet" href="../../static/css/vendor/admin.css">
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/pintuer.js"></script>
+    <script type="text/javascript" src="../../static/js/vendor/index.js"></script>
+</head>
+<body>
+<div class="panel admin-panel">
+    <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o">&nbsp;</span>修改商品</strong></div>
+    <div class="body-content">
+        <form method="post" class="form-auto" action="javascript:edit();">
+            <div class="padding-large-left padding-large-right">
+                <div id="tips"></div>
+                <input name="id" hidden="hidden"/>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>商品名称</strong>
+                    </div>
+                    <div class="field">
+                        <input type="text" class="input float-left" name="name" size="40"
+                               data-validate="required:请输入商品名称"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>商品图片</strong>
+                        <span class="tips" data-toggle="hover" data-place="right" title="图片大小:<1MB,图片尺寸<1024x1024">
+                            ❗
+                        </span>
+                    </div>
+                    <div class="field">
+                        <input class="button bg-blue input-file float-left" name="pic"
+                               type="file" size="100" onchange="setImagePreview();"
+                               data-validate="img:只能上传jpg|gif|png|ico格式文件" >
+                    </div>
+                    <div class="clearfix"></div>
+                    <img class="margin-little-top border radius" id="preview" width="310"/>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>商品价格</strong>
+                    </div>
+                    <div class="field">
+                        <input type="text" class="input float-left" name="price" size="40"
+                               data-validate="required:请输入商品价格,regexp#^([0-9]*)+(\.[0-9])?([0-9])?$:请输入正确的价格"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>商品数量</strong>
+                    </div>
+                    <div class="field">
+                        <input type="text" class="input float-left" name="num" size="40"
+                               data-validate="required:请输入商品数量,plusinteger:请输入正整数"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <!--                <if condition="$iscid eq 1">-->
+                <!--                    <div class="form-group">-->
+                <!--                        <div class="label">-->
+                <!--                            <strong>商品分组：</strong>-->
+                <!--                        </div>-->
+                <!--                        <div class="field">-->
+                <!--                            <select name="cid" class="input">-->
+                <!--                                <option value="">请选择分类</option>-->
+                <!--                                <option value="">产品分类</option>-->
+                <!--                                <option value="">产品分类</option>-->
+                <!--                                <option value="">产品分类</option>-->
+                <!--                                <option value="">产品分类</option>-->
+                <!--                            </select>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </if>-->
+                <div class="form-group">
+                    <div class="label">
+                        <strong>商品详情：</strong>
+                    </div>
+                    <div class="field">
+                        <textarea rows="5" cols="40" class="input float-left" id="info"></textarea>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>是否下架</strong>
+                    </div>
+                    <div class="field">
+                        <div class="button-group radio">
+                            <label class="button" id="off1">
+                                <input name="off" value="1"  type="radio">
+                                <span class="icon icon-check text-green"></span> 是
+                            </label>
+                            <label class="button active" id="off2">
+                                <input name="off" value="0" checked="checked" type="radio">
+                                <span class="icon icon-times text-red"></span> 否
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <label></label>
+                    </div>
+                    <div class="field" style="width: 310px">
+                        <div class="button-group">
+                            <button class="button border-sub icon-check-square-o" type="submit"> 提交</button>
+                            <button class="button border-dot icon-backward" type="button" onclick="list()"> 返回</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var success = "<div class=\"form-group animated bounce\">\n" +
+            "                    <div class=\"alert alert-green\">\n" +
+            "                        <span class=\"close rotate-hover\"></span><strong>恭喜：</strong>操作成功。\n" +
+            "                    </div>\n" +
+            "                </div>";
+
+        var failure = "<div class=\"form-group animated bounce\">\n" +
+            "                                            <div class=\"alert alert-yellow\">\n" +
+            "                                                <span class=\"close rotate-hover\"></span><strong>操作失败</strong>\n" +
+            "                                                <p>\n" +
+            "                                                    请重新操作。\n" +
+            "                                                </p>\n" +
+            "                                            </div>";
+
+        var error = "<div class=\"form-group animated bounce\">\n" +
+            "                                            <div class=\"alert alert-red\">\n" +
+            "                                                <span class=\"close rotate-hover\"></span><strong>访问异常</strong>\n" +
+            "                                                <p>\n" +
+            "                                                    请稍后重试。\n" +
+            "                                                </p>\n" +
+            "                                            </div>";
+
+        function getWarning(str) {
+            return "<div class=\"form-group animated bounce\">\n" +
+                "                                            <div class=\"alert alert-yellow\">\n" +
+                "                                                <span class=\"close rotate-hover\"></span><strong>注意：</strong>" + str + "\n" +
+                "                                            </div>\n" +
+                "                                        </div>";
+        }
+
+        function getTips(str) {
+            return "<div class=\"form-group animated bounce\">\n" +
+                "                                            <div class=\"alert alert-blue\">\n" +
+                "                                                <span class=\"close rotate-hover\"></span><strong>提示：</strong>" + str + "\n" +
+                "                                            </div>\n" +
+                "                                        </div>";
+        }
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            async: false,
+            url: window.location.origin + "/Jinops/goods/getById/" + getParam("id"),
+            success: function (data) {
+                if (data.code === 0) {
+                    $("input[name='id']").val(getParam("id"));
+                    $("input[name='name']").val(data.data.name);
+                    // $("input[name='pic']").val("test.jpg");
+                    $("#preview").attr("src",data.data.pic);
+                    $("input[name='price']").val(data.data.price);
+                    $("input[name='num']").val(data.data.num);
+                    $("#info").val(data.data.info);
+                    if(data.data.off){
+                        $("#off1").addClass("active");
+                        $("#off2").removeClass("active");
+                        $("input[name='off'][value='1']").prop("checked",true);
+                    }
+
+                }
+                if (data.code === -404) {
+                    window.scrollTo('0', '0');
+                    $("#tips").html(getWarning("未查询到该商品数据")).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                }
+                if (data.code === -1) {
+                    window.scrollTo('0', '0');
+                    $("#tips").html(failure).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                }
+            },
+            error: function (e) {
+                console.log(e);
+                window.scrollTo('0', '0');
+                $("#tips").html(error).on("click", ".close", function () {
+                    $(this).parent().parent().remove();
+                });
+            }
+        })
+    })
+
+</script>
+</body>
+</html>

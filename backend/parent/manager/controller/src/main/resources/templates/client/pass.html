@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/pintuer.css">
+    <link rel="stylesheet" href="../../static/css/client/admin.css">
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/pintuer.js"></script>
+    <script src="../../static/js/client/index.js"></script>
+</head>
+<body>
+<div class="panel admin-panel">
+    <div class="panel-head"><strong><span class="icon-key"></span> 修改密码</strong></div>
+    <div class="body-content">
+        <form method="post" class="form-auto" action="javascript:pass()">
+            <div class="padding-large-left padding-large-right">
+                <div id="tips"></div>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>账户名称</strong>
+                    </div>
+                    <div class="field">
+                        <label id="uname" style="line-height:33px;">
+                        </label>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>原密码</strong>
+                    </div>
+                    <div class="field">
+                        <input type="password" class="input float-left" name="oldPwd" size="40"
+                               placeholder="请输入原密码" data-validate="required:需填写的密码不能为空"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>新密码</strong>
+                        <span class="tips" data-toggle="hover" data-place="right" title="密码需至少包含一个英文字母、数字和特殊字符，长度限制为6-16位">
+                            ❗
+                        </span>
+                    </div>
+                    <div class="field">
+                        <input type="password" class="input float-left" name="newPwd" size="40" placeholder="请输入新密码"
+                               data-validate="required:需填写的密码不能为空,regexp#^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@$%*()_+^&}{;?.]).+$:需要输入至少一个英文字母、数字和特殊字符,length#>=6:密码的长度不能少于6位,length#<=16:密码的长度不能多于16位"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <strong>确认新密码</strong>
+                    </div>
+                    <div class="field">
+                        <input type="password" class="input float-left" name="queryNewPwd" size="40" placeholder="请再次输入新密码"
+                               data-validate="required:需填写的确认密码不能为空,repeat#newPwd:两次输入的密码不一致"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <label></label>
+                    </div>
+                    <div class="field">
+                        <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

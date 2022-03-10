@@ -1,0 +1,728 @@
+{
+  "list": [
+    {
+      "id": 2,
+      "name": "买卖淘",
+      "link": "www.868432.net"
+    },
+    {
+      "id": 3,
+      "name": "游魂全自动网页制作系统",
+      "link": "www.youhun.wang"
+    },
+    {
+      "id": 4,
+      "name": "游魂博客",
+      "link": "www.iyouhun.com"
+    },
+    {
+      "id": 5,
+      "name": "买卖淘",
+      "link": "www.868432.net"
+    },
+    {
+      "id": 6,
+      "name": "游魂全自动网页制作系统",
+      "link": "www.youhun.wang"
+    },
+    {
+      "name": "被修改的奥特曼",
+      "link": "www.atm.com",
+      "id": 13
+    }
+  ],
+  "user": [
+    {
+      "role": "user"
+    }
+  ],
+  "admin": [
+    {
+      "role": "admin"
+    }
+  ],
+  "maintainList": 
+  
+    
+  [
+    {
+      "id": 1,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 2,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 2,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 2,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号楼盘",
+      "type": "水电保修",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号楼盘",
+      "type": "楼房清洁",
+      "result": "2"
+    }
+  ]
+
+,"customer": [
+    {
+      "id": 1,
+      "building": "一号业主",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 2,
+      "building": "二号业主",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号业主",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号业主",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号业主",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号业主",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号业主",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 2,
+      "building": "二号业主",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号业主",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号业主",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号业主",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号业主",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号业主",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 2,
+      "building": "二号业主",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号业主",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号业主",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号业主",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号业主",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号业主",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号业主",
+      "type": "投诉",
+      "result": "2"
+    }
+  ],
+  "service": [
+    {
+      "id": 1,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 2,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 2,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 2,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    }
+  ],"owners": [
+    {
+      "id": 1,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 2,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 2,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 2,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 3,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 4,
+      "building": "二号区域",
+      "type": "评价",
+      "result": "2"
+    },
+    {
+      "id": 5,
+      "building": "一号区域",
+      "type": "投诉",
+      "result": "1"
+    },
+    {
+      "id": 6,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 7,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 8,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    },
+    {
+      "id": 9,
+      "building": "一号区域",
+      "type": "评价",
+      "result": "1"
+    },
+    {
+      "id": 10,
+      "building": "二号区域",
+      "type": "投诉",
+      "result": "2"
+    }
+  ],
+  "total":[28]
+}
