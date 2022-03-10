@@ -3,7 +3,6 @@ package com.hebeu.mapper;
 import com.hebeu.model.GoodsModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,7 +17,6 @@ import java.util.Map;
  */
 
 @Repository
-@Component
 @Mapper
 public interface GoodsMapper {
 
