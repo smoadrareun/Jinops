@@ -50,8 +50,11 @@ mybatis:
   #配置实体类
   type-aliases-package: com.hebeu.model
   configuration:
-    lazy-loading-enabled: true
-    aggressive-lazy-loading: false
+#    #延迟加载
+#    lazy-loading-enabled: true
+#    #开启按需加载
+#    aggressive-lazy-loading: false
+    #打印sql语句
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   file:

@@ -20,7 +20,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class StoreModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,7 +54,6 @@ public class StoreModel implements Serializable {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     static class DistInfo implements Serializable {
 
         private static final long serialVersionUID = 1L;

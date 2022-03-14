@@ -19,7 +19,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class OrderModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,7 +56,6 @@ public class OrderModel implements Serializable {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public static class ComInfo implements Serializable {
 
         private static final long serialVersionUID = 1L;

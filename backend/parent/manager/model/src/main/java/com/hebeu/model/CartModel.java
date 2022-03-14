@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CartModel implements Serializable {
 
     private static final long serialVersionUID = 1L;

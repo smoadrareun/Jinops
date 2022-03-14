@@ -17,7 +17,6 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class VendorModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
