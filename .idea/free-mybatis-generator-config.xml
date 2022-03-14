@@ -3,27 +3,56 @@
   <component name="PersistentConfig">
     <option name="historyConfigList">
       <map>
+        <entry key="addinfo">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="AddInfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="AddInfoMapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="AddInfoModel" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="addinfo" />
+              <option name="needToStringHashcodeEquals" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="addinfo" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
         <entry key="client">
           <value>
             <Config>
               <option name="comment" value="true" />
-              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
               <option name="daoName" value="ClientMapper" />
               <option name="daoPackage" value="com.hebeu.mapper" />
               <option name="daoPostfix" value="ClientMapper" />
-              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
               <option name="modelName" value="ClientModel" />
               <option name="modelPackage" value="com.hebeu.model" />
               <option name="name" value="client" />
               <option name="needToStringHashcodeEquals" value="true" />
               <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
               <option name="primaryKey" value="id" />
               <option name="projectFolder" value="$PROJECT_DIR$" />
               <option name="tableName" value="client" />
               <option name="useExample" value="true" />
               <option name="useLombokPlugin" value="true" />
               <option name="useSchemaPrefix" value="true" />
-              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
               <option name="xmlPackage" value="com.hebeu.mapper" />
             </Config>
           </value>

@@ -93,7 +93,7 @@ public class OrderController {
         }
     }
 
-    //添加交易地址信息
+    //添加交易详情信息
     @RequestMapping("/insertComInfo")
     public ResponseBody insertComInfo(@RequestBody Map<String,Object> map) {
         Boolean aBoolean=orderService.insertComInfo(map);
@@ -119,7 +119,7 @@ public class OrderController {
         }
     }
 
-    //根据地址信息id删除数据
+    //根据详情信息id删除数据
     @RequestMapping("/deleteComInfo/{id}")
     public ResponseBody deleteComInfo(@PathVariable("id") String id) {
         Boolean aBoolean=orderService.deleteComInfo(id);
@@ -143,7 +143,7 @@ public class OrderController {
         }
     }
 
-    //修改交易地址信息
+    //修改交易详情信息
     @RequestMapping("/updateComInfo")
     public ResponseBody updateComInfo(@RequestBody Map<String,Object> map) {
         Boolean aBoolean=orderService.updateComInfo(map);

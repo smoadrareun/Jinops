@@ -93,7 +93,7 @@ public class GoodsController {
         }
     }
 
-    //添加商品地址信息
+    //添加商品规格信息
     @RequestMapping("/insertSpecInfo")
     public ResponseBody insertSpecInfo(@RequestBody Map<String,Object> map) {
         Boolean aBoolean=goodsService.insertSpecInfo(map);
@@ -119,7 +119,7 @@ public class GoodsController {
         }
     }
 
-    //根据地址信息id删除数据
+    //根据规格信息id删除数据
     @RequestMapping("/deleteSpecInfo/{id}")
     public ResponseBody deleteSpecInfo(@PathVariable("id") Integer id) {
         Boolean aBoolean=goodsService.deleteSpecInfo(id);
@@ -143,7 +143,7 @@ public class GoodsController {
         }
     }
 
-    //修改商品地址信息
+    //修改商品规格信息
     @RequestMapping("/updateSpecInfo")
     public ResponseBody updateSpecInfo(@RequestBody Map<String,Object> map) {
         Boolean aBoolean=goodsService.updateSpecInfo(map);

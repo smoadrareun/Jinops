@@ -7,6 +7,7 @@ import com.hebeu.model.CartModel;
 import com.hebeu.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +23,7 @@ import java.util.Map;
  */
 
 @Service
+@Transactional
 public class CartServiceImpl implements CartService {
 
     private CartMapper cartMapper;

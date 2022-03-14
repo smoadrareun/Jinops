@@ -9,6 +9,7 @@ import com.hebeu.mapper.VendorMapper;
 import com.hebeu.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import java.util.Map;
  */
 
 @Service
+@Transactional
 public class VendorServiceImpl implements VendorService {
 
     private VendorMapper vendorMapper;
@@ -40,10 +42,10 @@ public class VendorServiceImpl implements VendorService {
         try{
             Object venToken=map.get("venToken");
             if(venToken!=null){
-                String verify=TokenUtil.verify(venToken.toString(),map.get("admin").toString());
-                if(verify!=null){
+                String uname=TokenUtil.verify(venToken.toString(),map.get("admin").toString());
+                if(uname!=null){
                     resultMap.put("venToken",venToken);
-                    map.put("uname",verify);
+                    map.put("uname",uname);
                     List<VendorModel> list=vendorMapper.find(map);
                     list.get(0).setPasswd(null);
                     resultMap.put("vendor",list.get(0));

@@ -8,6 +8,7 @@ import com.hebeu.mapper.OrderMapper;
 import com.hebeu.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ import java.util.Map;
  */
 
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
     private OrderMapper orderMapper;

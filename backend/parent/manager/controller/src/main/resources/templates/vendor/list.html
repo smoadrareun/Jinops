@@ -177,6 +177,12 @@
                 data: data,
                 async: false,
                 url: window.location.origin + "/Jinops/goods/query",
+                beforeSend:function(){
+                    window.scrollTo('0', '0');
+                    $("#tips").html(getTips("加载中，请稍后")).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                },
                 success: function (data) {
                     if (data.code === 0) {
                         $("#vo").empty();
@@ -323,6 +329,9 @@
                             $(this).parent().parent().remove();
                         });
                     }
+                },
+                complete:function(){
+                    $("#tips").html("");
                 },
                 error: function (e) {
                     console.log(e);

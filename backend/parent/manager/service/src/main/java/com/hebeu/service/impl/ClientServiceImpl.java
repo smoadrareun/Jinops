@@ -41,10 +41,10 @@ public class ClientServiceImpl implements ClientService {
         try{
             Object cliToken=map.get("cliToken");
             if(cliToken!=null){
-                String verify=TokenUtil.verify(cliToken.toString(),"kh");
-                if(verify!=null){
+                String uname=TokenUtil.verify(cliToken.toString(),"kh");
+                if(uname!=null){
                     resultMap.put("cliToken",cliToken);
-                    map.put("uname",verify);
+                    map.put("uname",uname);
                     List<ClientModel> list=clientMapper.find(map);
                     list.get(0).setPasswd(null);
                     resultMap.put("client",list.get(0));

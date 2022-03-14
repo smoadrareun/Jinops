@@ -24,9 +24,8 @@ public class TokenUtil {
     //token秘钥
     private static final String TOKEN_SECRET = "0b85cc0e3ac111d2a7bc88387efc4c74";
 
-    public static String getToken (String uname,String passwd,String secret){
-
-        String token = "";
+    public static String getToken(String uname,String passwd,String secret){
+        String token = null;
         try {
             //过期时间
             Date date = new Date(System.currentTimeMillis()+EXPIRE_DATE);
@@ -39,8 +38,9 @@ public class TokenUtil {
             //携带username，password信息，生成签名
             token = JWT.create()
                     .withHeader(header)
-                    .withClaim("username",uname)
-                    .withClaim("password",passwd).withExpiresAt(date)
+                    .withClaim("uname",uname)
+                    .withClaim("passwd",passwd)
+                    .withExpiresAt(date)
                     .sign(algorithm);
         }catch (Exception e){
             e.printStackTrace();
@@ -50,15 +50,17 @@ public class TokenUtil {
     }
 
     public static String verify(String token,String secret){
+        String uname = null;
         try {
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET+secret);
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
-            return jwt.getClaim("username").asString();
+            uname = jwt.getClaim("uname").asString();
         }catch (Exception e){
             e.printStackTrace();
             return null;
         }
+        return uname;
     }
 
 }

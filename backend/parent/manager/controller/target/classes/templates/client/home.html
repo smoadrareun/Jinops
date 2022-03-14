@@ -11,6 +11,10 @@
 </head>
 <body>
 <div id="content">
+    <div class="banner">
+        <div class="carousel" id="banner">
+        </div>
+    </div>
     <form method="post" action="" id="listform">
         <div class="panel admin-panel">
             <div class="padding border-bottom">
@@ -137,9 +141,16 @@
                 data: data,
                 async: false,
                 url: window.location.origin + "/Jinops/goods/query",
+                beforeSend:function(XMLHttpRequest){
+                    window.scrollTo('0', '0');
+                    $("#tips").html(getTips("加载中，请稍后")).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                },
                 success: function (data) {
                     if (data.code === 0) {
                         $("#list").empty();
+                        $("#banner").empty();
                         for (var i = data.data.goods.length - 1; i >= 0; i--) {
                             var str = "<div class=\"xl6 xs4 xm3 xb3\">\n" +
                                 "           <div class=\"media padding-bottom margin border radius clearfix\">" +
@@ -155,7 +166,10 @@
                                 "               </blockquote>\n" +
                                 "            </div>\n" +
                                 "        </div>";
+                            var str1="<div class=\"item\">\n" +
+                                "       <img src=\""+data.data.goods[i].pic+"\" class=\"radius img-responsive\"></div>";
                             $("#list").prepend(str);
+                            $("#banner").prepend(str1);
                         }
                         $("#pageList").empty();
                         var str="";
@@ -261,6 +275,9 @@
                             $(this).parent().parent().remove();
                         });
                     }
+                },
+                complete:function(XMLHttpRequest){
+                    $("#tips").html("");
                 },
                 error: function (e) {
                     console.log(e);

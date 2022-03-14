@@ -146,6 +146,12 @@
                 data: data,
                 async: false,
                 url: window.location.origin + "/Jinops/order/query",
+                beforeSend:function(XMLHttpRequest){
+                    window.scrollTo('0', '0');
+                    $("#tips").html(getTips("加载中，请稍后")).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                },
                 success: function (data) {
                     if (data.code === 0) {
                         $("#vo").empty();
@@ -265,6 +271,9 @@
                             $(this).parent().parent().remove();
                         });
                     }
+                },
+                complete:function(XMLHttpRequest){
+                    $("#tips").html("");
                 },
                 error: function (e) {
                     console.log(e);

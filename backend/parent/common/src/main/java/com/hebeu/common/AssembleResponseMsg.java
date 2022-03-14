@@ -11,7 +11,7 @@ public class AssembleResponseMsg {
 
     /**
      * 成功返回内容
-     * @Param [data]
+     * @Param [message, data]
      * @return model.ResponseBody
      **/
 
@@ -27,7 +27,7 @@ public class AssembleResponseMsg {
 
     /**
      * 失败/异常返回内容
-     * @Param [status, errorCode, message]
+     * @Param [errorCode, message]
      * @return model.ResponseBody
      **/
 
