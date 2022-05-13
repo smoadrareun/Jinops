@@ -1,11 +1,11 @@
 <template>
   <div class="item">
-    <h1>This is the hello.html in templates</h1>
+    <h1>This is the Hello.vue in templates</h1>
     <span th:text="${key}"></span><br>
     <span id="datetime" th:text="${value}"></span><br>
-    <a href="javascript:goto();function goto(){window.location.href=window.location.origin+'/vendor/index.html'}" style="color: #FFFFFF">
+    <a href="javascript:goto();function goto(){window.location.href=window.location.origin+'/vendor/index'}" style="color: #FFFFFF">
       <input type="button" value="后台管理页面"/></a><br>
-    <a href="javascript:goto();function goto(){window.location.href=window.location.origin+'/client/index.html'}" style="color: #FFFFFF">
+    <a href="javascript:goto();function goto(){window.location.href=window.location.origin+'/client/index'}" style="color: #FFFFFF">
       <input type="button" value="前台商城页面"/></a><br>
     <div style="display: none" th:style="${value!=null}? 'display:inline':''">
       <span>无聊？来点验证码测试吧：</span><br>
@@ -85,7 +85,7 @@ body {
 
 .item {
   position: relative;
-  width: 60%;
+  width: 100%;
   height: auto;
   padding: 30px;
   border-radius: 10px;
@@ -120,7 +120,7 @@ body {
 }
 
 .beian {
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
   text-align: center;

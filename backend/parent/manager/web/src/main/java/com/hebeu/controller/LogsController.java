@@ -1,109 +1,106 @@
-//package com.hebeu.controller;
-//
-//import com.alibaba.fastjson.JSONArray;
-//import com.hebeu.utils.AssembleResponseMsg;
-//import com.hebeu.utils.ResponseBody;
-//import com.hebeu.model.LogsModel;
-//import com.hebeu.service.LogsService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//import java.util.Map;
-//
-///**
-// * Created with IntelliJ IDEA.
-// *
-// * @ClassName: LogsController
-// * @Author: Smoadrareun
-// * @Description: TODO 日志信息控制层实现类
-// */
-//
-//@CrossOrigin
-//@RestController
-//@RequestMapping("/Jinops/logs")
-//public class LogsController {
-//    private LogsService logsService;
-//    public AssembleResponseMsg msg = new AssembleResponseMsg();
-//
-//    @Autowired
-//    public void setLogsService (LogsService logsService) {
-//        this.logsService = logsService;
-//    }
-//
-//    //查询所有日志数据
-//    @RequestMapping("/getList")
-//    public ResponseBody getList() {
-//        List<LogsModel> list=logsService.getList();
-//        if(list==null){
-//            return msg.failure(-1,"查询所有日志数据失败");
-//        }else if(list.size()==0){
-//            return msg.failure(-404,"查询所有日志未找到数据");
-//        }else{
-//            return msg.success("查询所有日志数据成功","List",list);
-//        }
-//    }
-//
-//    //根据日志id查询数据
-//    @RequestMapping("/getById/{id}")
-//    public ResponseBody getById(@PathVariable("id") String id) {
-//        LogsModel logsModel=logsService.getById(id);
-//        if(logsModel==null){
-//            return msg.failure(-1,"根据日志id查询数据失败");
-//        }else if(logsModel.getId()==null){
-//            return msg.failure(-404,"根据日志id查询未找到数据");
-//        }else{
-//            return msg.success("根据日志id查询数据成功","Model",logsModel);
-//        }
-//    }
-//
-//    //精确查询日志数据
-//    @RequestMapping("/find")
-//    public ResponseBody find(@RequestBody Map<String,Object> map) {
-//        List<LogsModel> list=logsService.find(map);
-//        if(list==null){
-//            return msg.failure(-1,"精确查询日志数据失败");
-//        }else if(list.size()==0){
-//            return msg.failure(-404,"精确查询日志未找到数据");
-//        }else{
-//            return msg.success("精确查询日志数据成功","List",list);
-//        }
-//    }
-//
-//    //模糊查询日志数据
-//    @RequestMapping("/search")
-//    public ResponseBody search(@RequestBody Map<String,Object> map) {
-//        List<LogsModel> list=logsService.search(map);
-//        if(list==null){
-//            return msg.failure(-1,"模糊查询日志数据失败");
-//        }else if(list.size()==0){
-//            return msg.failure(-404,"模糊查询日志未找到数据");
-//        }else{
-//            return msg.success("模糊查询日志数据成功","List",list);
-//        }
-//    }
-//
-//    //请求查询日志数据
-//    @RequestMapping("/query")
-//    public ResponseBody query(@RequestBody Map<String,Object> map) {
-//        Map<String,Object> resultMap=logsService.query(map);
-//        if(resultMap.get("logs")==null){
-//            return msg.failure(-1,"请求查询日志数据失败");
-//        }else if(((List<LogsModel>) resultMap.get("logs")).size()==0){
-//            return msg.failure(-404,"请求查询日志未找到数据");
-//        }else{
-//            return msg.success("请求查询日志数据成功","Map",resultMap);
-//        }
-//    }
-//
-//    @RequestMapping("/kind/{kind}")
-//    public ResponseBody kind(@PathVariable("kind") Integer kind) {
-//        JSONArray jsonArray=logsService.kind(kind);
-//        if(jsonArray==null){
-//            return msg.failure(-1,"请求查询日志数据失败");
-//        }else{
-//            return msg.success("请求查询日志数据成功","JSONArray",jsonArray);
-//        }
-//    }
-//
-//}
+package com.hebeu.controller;
+
+import com.github.pagehelper.PageInfo;
+import com.hebeu.common.ResponseBody;
+import com.hebeu.pojo.vo.LogsVo;
+import com.hebeu.service.LogsService;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @ClassName: LogsController
+ * @Author: Smoadrareun
+ * @Description: TODO 日志信息控制层实现类
+ */
+
+@CrossOrigin
+@RestController
+@RequestMapping("/Jinops/logs")
+public class LogsController {
+
+    @Resource
+    private LogsService logsService;
+
+    public ResponseBody<Object> resp = new ResponseBody<>();
+
+    //根据日志id查询数据
+    @RequestMapping("/getById/{id}")
+    public ResponseBody<Object> getById(@PathVariable("id") String id) {
+        LogsVo logsVo = logsService.getById(id);
+        if (logsVo == null) {
+            return resp.failure(-1, "根据id查询日志信息失败");
+        } else if (logsVo.getId() == null) {
+            return resp.failure(-404, "根据id查询日志信息未找到数据");
+        } else {
+            return resp.success("根据id查询日志信息成功", logsVo);
+        }
+    }
+
+    //查询所有日志数据
+    @RequestMapping("/getList")
+    public ResponseBody<Object> getList() {
+        List<LogsVo> list = logsService.getList();
+        if (list == null) {
+            return resp.failure(-1, "查询所有日志信息失败");
+        } else if (list.size() == 0) {
+            return resp.failure(-404, "查询所有日志信息未找到数据");
+        } else {
+            return resp.success("查询所有日志信息成功", new PageInfo<>(list));
+        }
+    }
+
+    //根据条件查询日志数据
+    @RequestMapping("/select")
+    public ResponseBody<Object> select(@RequestBody LogsVo logsVo) {
+        PageInfo<LogsVo> pageInfo = logsService.select(logsVo);
+        if (pageInfo == null) {
+            return resp.failure(-1, "根据条件查询日志信息失败");
+        } else if (pageInfo.getList() == null) {
+            return resp.failure(-404, "根据条件查询日志信息未找到数据");
+        } else {
+            return resp.success("根据条件查询日志信息成功", pageInfo);
+        }
+    }
+
+    //添加日志数据
+    @RequestMapping("/insert")
+    public ResponseBody<Object> insert(@RequestBody LogsVo logsVo) {
+        LogsVo logsVos = logsService.insert(logsVo);
+        if (logsVos == null || logsVos.getId() == null) {
+            return resp.failure(-1, "添加日志信息失败");
+        } else {
+            return resp.success("添加日志信息成功", logsVos);
+        }
+    }
+
+    //根据日志id删除数据
+    @RequestMapping("/delete/{id}")
+    public ResponseBody<Object> delete(@PathVariable("id") String id) {
+        Boolean aBoolean = logsService.delete(id);
+        if (aBoolean == null) {
+            return resp.failure(-1, "删除日志信息失败");
+        } else if (!aBoolean) {
+            return resp.failure(-404, "需删除的日志信息不存在");
+        } else {
+            return resp.success("删除日志信息成功", null);
+        }
+    }
+
+    //修改日志数据
+    @RequestMapping("/update")
+    public ResponseBody<Object> update(@RequestBody LogsVo logsVo) {
+        LogsVo logsVos = logsService.update(logsVo);
+        if (logsVos == null) {
+            return resp.failure(-1, "修改日志信息失败");
+        } else if (logsVos.getId() == null) {
+            return resp.failure(-404, "需修改的日志信息不存在");
+        } else {
+            return resp.success("修改日志信息成功", null);
+        }
+    }
+
+}

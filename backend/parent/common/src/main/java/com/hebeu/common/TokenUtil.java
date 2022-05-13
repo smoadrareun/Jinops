@@ -5,9 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,13 +22,13 @@ public class TokenUtil {
     //token秘钥
     private static final String TOKEN_SECRET = "0b85cc0e3ac111d2a7bc88387efc4c74";
 
-    public static String getToken(String uname,String passwd,String secret){
+    public static String getToken(String uname,String passwd,String salt){
         String token = null;
         try {
             //过期时间
             Date date = new Date(System.currentTimeMillis()+EXPIRE_DATE);
             //秘钥及加密算法
-            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET+secret);
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
             //设置头部信息
             Map<String,Object> header = new HashMap<>();
             header.put("typ","JWT");
@@ -40,6 +38,7 @@ public class TokenUtil {
                     .withHeader(header)
                     .withClaim("uname",uname)
                     .withClaim("passwd",passwd)
+                    .withClaim("salt",salt)
                     .withExpiresAt(date)
                     .sign(algorithm);
         }catch (Exception e){
@@ -49,18 +48,20 @@ public class TokenUtil {
         return token;
     }
 
-    public static String verify(String token,String secret){
-        String uname = null;
+    public static List<String> verify(String token){
+        List<String> list=new ArrayList<>();
         try {
-            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET+secret);
+            Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
             JWTVerifier verifier = JWT.require(algorithm).build();
             DecodedJWT jwt = verifier.verify(token);
-            uname = jwt.getClaim("uname").asString();
+            list.add(jwt.getClaim("uname").asString());
+            list.add(jwt.getClaim("passwd").asString());
+            list.add(jwt.getClaim("salt").asString());
         }catch (Exception e){
             e.printStackTrace();
             return null;
         }
-        return uname;
+        return list;
     }
 
 }

@@ -10,5 +10,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/jinops?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC&amp;allowMultiQueries=true</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="Mycat@localhost" uuid="200baf0f-56fb-4d15-94cc-2996be54cbd3">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:8066/TESTDB</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

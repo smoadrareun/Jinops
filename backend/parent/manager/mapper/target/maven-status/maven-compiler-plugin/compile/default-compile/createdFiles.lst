@@ -1,0 +1,15 @@
+com\hebeu\mapper\OrderMapper.class
+com\hebeu\mapper\SpecInfoMapper.class
+com\hebeu\mapper\VendorMapper.class
+com\hebeu\mapper\StoreMapper.class
+com\hebeu\mapper\AreasMapper.class
+com\hebeu\mapper\RolePathMapper.class
+com\hebeu\mapper\ClientMapper.class
+com\hebeu\mapper\AddrInfoMapper.class
+com\hebeu\mapper\CartMapper.class
+com\hebeu\mapper\DistInfoMapper.class
+com\hebeu\mapper\GoodsMapper.class
+com\hebeu\mapper\LogsMapper.class
+com\hebeu\mapper\RoleMapper.class
+com\hebeu\mapper\ComInfoMapper.class
+com\hebeu\mapper\PathMapper.class

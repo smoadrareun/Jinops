@@ -2,14 +2,20 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/backend/parent/common/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/backend/parent/manager/controller/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/parent/common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/parent/manager/mapper/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/backend/parent/manager/model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/parent/manager/mapper/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/parent/manager/pojo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/parent/manager/pojo/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/parent/manager/service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/parent/manager/service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/parent/manager/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/parent/manager/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/parent/manager/web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/parent/manager/web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/parent/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/backend/parent/src/main/resources" charset="UTF-8" />
     <file url="file://$APPLICATION_HOME_DIR$/plugins/maven/repository/org/springframework/boot/spring-boot-starter-parent/2.5.6/src/main/resources" charset="UTF-8" />
+    <file url="file://$APPLICATION_HOME_DIR$/plugins/maven/repository/org/springframework/boot/spring-boot-starter-parent/2.6.4/src/main/resources" charset="UTF-8" />
   </component>
 </project>

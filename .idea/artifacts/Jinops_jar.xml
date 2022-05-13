@@ -3,10 +3,10 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Jinops_jar</output-path>
     <root id="archive" name="Jinops.jar">
       <element id="module-output" name="common" />
-      <element id="module-output" name="controller" />
+      <element id="module-output" name="web" />
       <element id="module-output" name="service" />
       <element id="module-output" name="mapper" />
-      <element id="module-output" name="model" />
+      <element id="module-output" name="pojo" />
       <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/plugins/maven/repository/org/mybatis/spring/boot/mybatis-spring-boot-autoconfigure/2.2.0/mybatis-spring-boot-autoconfigure-2.2.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/plugins/maven/repository/ch/qos/logback/logback-core/1.2.6/logback-core-1.2.6.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/plugins/maven/repository/asm/asm/3.1/asm-3.1.jar" path-in-jar="/" />

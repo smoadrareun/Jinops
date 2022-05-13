@@ -1,7 +1,36 @@
-package com.hebeu.security;/**
- * Created with IntelliJ IDEA.
- * @ClassName: CustomizeLogoutSuccessHandler
- * @Author: Smoadrareun
- * @Description: TODO
- */public class CustomizeLogoutSuccessHandler {
-}
+//package com.hebeu.security;
+//
+//import com.alibaba.fastjson.JSON;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+//import org.springframework.stereotype.Component;
+//
+//import javax.servlet.ServletException;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//import java.io.IOException;
+//import java.util.HashMap;
+//import java.util.Map;
+//
+///**
+// * Created with IntelliJ IDEA.
+// *
+// * @ClassName: CustomizeLogoutSuccessHandler
+// * @Author: Smoadrareun
+// * @Description: TODO
+// */
+//
+//@Component
+//public class CustomizeLogoutSuccessHandler implements LogoutSuccessHandler {
+//    @Override
+//    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("code", 300);
+//        map.put("msg", "已注销");
+//        map.put("success", true);
+//        String json = JSON.toJSONString(map);
+//
+//        response.setContentType("text/json;charset=utf-8");
+//        response.getWriter().write(json);
+//    }
+//}

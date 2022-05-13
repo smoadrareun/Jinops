@@ -1,6 +1,9 @@
 package com.hebeu.service;
 
-import com.hebeu.model.VendorModel;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import com.hebeu.pojo.Vendor;
+import com.hebeu.pojo.vo.VendorVo;
 
 import java.util.List;
 import java.util.Map;
@@ -14,22 +17,22 @@ import java.util.Map;
  * @Description: TODO 商户信息服务层接口
  */
 
-public interface VendorService {
+public interface VendorService extends IService<Vendor> {
 
-    Map<String,Object> login(Map<String,Object> map);
+    VendorVo login(String uname, String passwd);
 
-    List<VendorModel> getList();
+    VendorVo login(String token);
 
-    VendorModel getById(Integer id);
+    VendorVo getById(Integer id);
 
-    List<VendorModel> find(Map<String,Object> map);
+    List<VendorVo> getList();
 
-    List<VendorModel> search(Map<String,Object> map);
+    PageInfo<VendorVo> select(VendorVo clientVo);
 
-    Boolean insert(Map<String,Object> map);
+    VendorVo insert(VendorVo clientVo);
 
     Boolean delete(Integer id);
 
-    Boolean update(Map<String,Object> map);
+    VendorVo update(VendorVo clientVo);
 
 }

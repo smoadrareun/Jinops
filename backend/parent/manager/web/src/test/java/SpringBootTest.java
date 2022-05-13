@@ -1,8 +1,13 @@
-
+import com.hebeu.Application;
+import com.hebeu.pojo.vo.CartVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.BeanUtils;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.math.BigDecimal;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,11 +18,12 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class Test {
+@org.springframework.boot.test.context.SpringBootTest(classes = Application.class)
+public class SpringBootTest {
 
-    @org.junit.Test
+
+    @Test
     public void test(){
-        System.out.println("spring test start");
+
     }
 }

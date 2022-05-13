@@ -15,7 +15,7 @@ import java.util.*;
  * @Author: Smoadrareun
  * @Description: TODO 验证码工具类
  */
-public class CodeUtil {
+public class VerUtil {
 
     private static final Random random = new Random();
 
@@ -74,8 +74,7 @@ public class CodeUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Map<String,String> map=new HashMap<>();
-        return "data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(bout.toByteArray());
+        return "data:image/jpeg;base64,"+CodeUtil.byteToBase64(bout.toByteArray());
     }
 
 }

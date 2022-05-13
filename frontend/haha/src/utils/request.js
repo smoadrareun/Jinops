@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
  const request = axios.create({
      baseURL:'http://60.205.188.33:8888/'
  })

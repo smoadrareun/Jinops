@@ -1,9 +1,11 @@
 package com.hebeu.service;
 
-import com.hebeu.model.CartModel;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import com.hebeu.pojo.Cart;
+import com.hebeu.pojo.vo.CartVo;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,22 +15,18 @@ import java.util.Map;
  * @Description: TODO 购物车信息服务层接口
  */
 
-public interface CartService {
+public interface CartService extends IService<Cart> {
 
-    List<CartModel> getList();
+    CartVo getById(String id);
 
-    CartModel getById(String id);
+    List<CartVo> getList();
 
-    List<CartModel> find(Map<String,Object> map);
+    PageInfo<CartVo> select(CartVo cartVo);
 
-    List<CartModel> search(Map<String,Object> map);
-
-    Boolean insert(Map<String,Object> map);
+    CartVo insert(CartVo cartVo);
 
     Boolean delete(String id);
 
-    Boolean update(Map<String,Object> map);
+    CartVo update(CartVo cartVo);
 
-    Map<String,Object> query(Map<String,Object> map);
-    
 }

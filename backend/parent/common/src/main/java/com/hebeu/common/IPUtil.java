@@ -166,7 +166,7 @@ public class IPUtil {
                 addr = InetAddress.getLocalHost();
                 ip = addr.getHostAddress();
             } catch (UnknownHostException e) {
-                log.error("获取失败",e);
+                log.error("获取IP地址失败",e);
             }
             return ip;
         } else {
@@ -175,9 +175,7 @@ public class IPUtil {
                         .getNetworkInterfaces();
                 while (e1.hasMoreElements()) {
                     NetworkInterface ni = (NetworkInterface) e1.nextElement();
-                    if (!ni.getName().equals("eth0")) {
-                        continue;
-                    } else {
+                    if (ni.getName().equals("eth0")){
                         Enumeration<?> e2 = ni.getInetAddresses();
                         while (e2.hasMoreElements()) {
                             InetAddress ia = (InetAddress) e2.nextElement();
@@ -190,7 +188,7 @@ public class IPUtil {
                     }
                 }
             } catch (SocketException e) {
-                log.error("获取失败",e);
+                log.error("获取IP地址失败",e);
             }
         }
         return "";

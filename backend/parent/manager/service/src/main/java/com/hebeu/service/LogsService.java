@@ -1,10 +1,11 @@
 package com.hebeu.service;
 
-import com.alibaba.fastjson.JSONArray;
-import com.hebeu.model.LogsModel;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import com.hebeu.pojo.Logs;
+import com.hebeu.pojo.vo.LogsVo;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,17 +15,18 @@ import java.util.Map;
  * @Description: TODO 日志信息服务层接口
  */
 
-public interface LogsService {
+public interface LogsService extends IService<Logs> {
 
-    List<LogsModel> getList();
+    LogsVo getById(String id);
 
-    LogsModel getById(String id);
+    List<LogsVo> getList();
 
-    List<LogsModel> find(Map<String,Object> map);
+    PageInfo<LogsVo> select(LogsVo cartVo);
 
-    List<LogsModel> search(Map<String,Object> map);
+    LogsVo insert(LogsVo cartVo);
 
-    Map<String,Object> query(Map<String,Object> map);
+    Boolean delete(String id);
 
-    JSONArray kind(Integer kind);
+    LogsVo update(LogsVo cartVo);
+
 }

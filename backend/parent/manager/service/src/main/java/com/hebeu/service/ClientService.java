@@ -1,9 +1,11 @@
 package com.hebeu.service;
 
-import com.hebeu.model.ClientModel;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import com.hebeu.pojo.Client;
+import com.hebeu.pojo.vo.ClientVo;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,27 +15,28 @@ import java.util.Map;
  * @Description: TODO 客户信息服务层接口
  */
 
-public interface ClientService {
+public interface ClientService extends IService<Client> {
 
-    Map<String,Object> login(Map<String,Object> map);
+    ClientVo login(String uname,String passwd);
 
-    List<ClientModel> getList();
+    ClientVo login(String cliToken);
 
-    ClientModel getById(Integer id);
+    ClientVo getById(Integer id);
 
-    List<ClientModel> find(Map<String,Object> map);
+    List<ClientVo> getList();
 
-    List<ClientModel> search(Map<String,Object> map);
+    PageInfo<ClientVo> select(ClientVo clientVo);
 
-    Boolean insert(Map<String,Object> map);
+    ClientVo insert(ClientVo clientVo);
 
-    Boolean insertAddInfo(Map<String,Object> map);
+    ClientVo insertAddrInfo(ClientVo.AddrInfoVo addrInfoVo);
 
     Boolean delete(Integer id);
 
-    Boolean deleteAddInfo(Integer id);
+    Boolean deleteAddrInfo(String id);
 
-    Boolean update(Map<String,Object> map);
+    ClientVo update(ClientVo clientVo);
 
-    Boolean updateAddInfo(Map<String,Object> map);
+    ClientVo updateAddrInfo(ClientVo.AddrInfoVo addrInfoVo);
+
 }

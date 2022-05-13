@@ -1,77 +1,93 @@
 package com.hebeu.controller;
 
+import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import com.hebeu.common.VerUtil;
 import com.hebeu.common.SmsUtil;
 import com.hebeu.common.MailUtil;
-import com.hebeu.pojo.ResponseBody;
+import com.hebeu.common.ResponseBody;
+import com.hebeu.pojo.vo.MailVo;
+import com.hebeu.pojo.vo.SmsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.Map;
+
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @ClassName: UtilsController
+ * @Author: Smoadrareun
+ * @Description: TODO 工具组件控制层实现类
+ */
 
 @CrossOrigin
 @RestController
 @RequestMapping("/Jinops/utils")
 public class UtilsController {
-    public ResponseBody msg = new ResponseBody();
+    public ResponseBody<Object> resp = new ResponseBody<>();
 
     private MailUtil mailUtil;
 
     @Autowired
-    private void setMailUtil(MailUtil mailUtil){
-        this.mailUtil=mailUtil;
+    private void setMailUtil(MailUtil mailUtil) {
+        this.mailUtil = mailUtil;
     }
 
     private SmsUtil smsUtil;
 
     @Autowired
-    private void setSmsUtil(SmsUtil smsUtil){
-        this.smsUtil=smsUtil;
+    private void setSmsUtil(SmsUtil smsUtil) {
+        this.smsUtil = smsUtil;
     }
 
     //获取验证码
     @RequestMapping("/getVerCode/{length}")
-    public ResponseBody getVerCode(@PathVariable("length") Integer length) {
-        Map<String,String> map= new HashMap<>();
-        String verCode= VerUtil.getRandom(length);
-        map.put("verCode",verCode);
+    public ResponseBody<Object> getVerCode(@PathVariable("length") Integer length) {
+        Map<String, String> map = new HashMap<>();
+        String verCode = VerUtil.getRandom(length);
+        map.put("verCode", verCode);
         map.put("verImage", VerUtil.getCodeImage(verCode));
-        return msg.success("验证码获取成功",map);
-    }
-
-    @RequestMapping("/getImg")
-    public ResponseBody getImg(@RequestBody Map<String,Object> map) {
-        Map<String,String> maps= new HashMap<>();
-        MultipartFile file= (MultipartFile) map.get("img");
-        file.getContentType();
-        return msg.success("验证码获取成功",maps);
+        return resp.success("验证码获取成功", map);
     }
 
     @RequestMapping("/sendMail")
-    public ResponseBody sendMail(@RequestBody Map<String,Object> map) {
-        if(map.get("type").equals("1")){
-            mailUtil.sendSimpleMail(map.get("to").toString(),map.get("subject").toString(),map.get("content").toString());
-        }else if(map.get("type").equals("2")){
-            mailUtil.sendHtmlMail(map.get("to").toString(),map.get("subject").toString(),map.get("content").toString());
-        }else if(map.get("type").equals("3")){
-            mailUtil.sendAttachmentMail(map.get("to").toString(),map.get("subject").toString(),map.get("content").toString(),map.get("filePath").toString());
-        }else if(map.get("type").equals("4")){
-            mailUtil.sendInlineResourceMail(map.get("to").toString(),map.get("subject").toString(),map.get("content").toString(),map.get("rscPath").toString(),map.get("String rscId").toString());
+    public ResponseBody<Object> sendMail(@RequestBody MailVo mailVo) {
+        Boolean aBoolean = null;
+        switch (mailVo.getType()) {
+            case 1: {
+                aBoolean = mailUtil.sendHtmlMail(mailVo.getTo(), mailVo.getSubject(), mailVo.getContent());
+            }
+            case 2: {
+                aBoolean = mailUtil.sendAttachmentMail(mailVo.getTo(), mailVo.getSubject(), mailVo.getContent(), mailVo.getFilePath());
+            }
+            case 3: {
+                aBoolean = mailUtil.sendInlineResourceMail(mailVo.getTo(), mailVo.getSubject(), mailVo.getContent(), mailVo.getRscPath(), mailVo.getRscId());
+            }
+            default: {
+                aBoolean = mailUtil.sendSimpleMail(mailVo.getTo(), mailVo.getSubject(), mailVo.getContent());
+            }
         }
-        return msg.success("邮件发送成功",null);
+        if (aBoolean == null || !aBoolean) {
+            return resp.failure(-1, "邮件发送失败");
+        } else {
+            return resp.success("短信验证码发送成功", mailVo);
+        }
     }
 
-    @RequestMapping("/sendSms/{phone}")
-    public ResponseBody sendSms(@PathVariable("phone") Long phone) {
-        Boolean aBoolean=smsUtil.SendSms(String.valueOf(phone), VerUtil.getRandomNumber(6).toString(),"5");
-        if(aBoolean==null){
-            return msg.failure(-1,"短信验证码发送失败");
-        }else if(!aBoolean){
-            return msg.failure(-400,"输入的手机号不符合规范");
-        }else{
-            return msg.success("短信验证码发送成功",null);
+    @RequestMapping("/sendSms")
+    public ResponseBody<Object> sendSms(@RequestBody SmsVo smsVo) {
+        if(ObjectUtils.isEmpty(smsVo.getLength())||smsVo.getLength()>6){
+            smsVo.setLength(6);
+        }
+        smsVo.setCode(VerUtil.getRandomNumber(smsVo.getLength()));
+        Boolean aBoolean = smsUtil.SendSms(String.valueOf(smsVo.getPhone()), smsVo.getCode(), String.valueOf(smsVo.getMinute()));
+        if (aBoolean == null) {
+            return resp.failure(-1, "短信验证码发送失败");
+        } else if (!aBoolean) {
+            return resp.failure(-400, "输入的手机号不符合规范");
+        } else {
+            return resp.success("短信验证码发送成功", smsVo);
         }
     }
 

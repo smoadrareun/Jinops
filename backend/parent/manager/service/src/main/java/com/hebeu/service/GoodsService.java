@@ -1,40 +1,38 @@
 package com.hebeu.service;
 
-import com.hebeu.model.GoodsModel;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import com.hebeu.pojo.Goods;
+import com.hebeu.pojo.vo.GoodsVo;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @ClassName: GoodsService
  * @Author: Smoadrareun
- * @Description: TODO 商品信息服务层接口
+ * @Description: TODO 客户信息服务层接口
  */
 
-public interface GoodsService {
+public interface GoodsService extends IService<Goods> {
 
-    List<GoodsModel> getList();
+    GoodsVo getById(String id);
 
-    GoodsModel getById(Integer id);
+    List<GoodsVo> getList();
 
-    List<GoodsModel> find(Map<String,Object> map);
+    PageInfo<GoodsVo> select(GoodsVo goodsVo);
 
-    List<GoodsModel> search(Map<String,Object> map);
+    GoodsVo insert(GoodsVo goodsVo);
 
-    Boolean insert(Map<String,Object> map);
-
-    Boolean insertSpecInfo(Map<String,Object> map);
+    GoodsVo insertSpecInfo(GoodsVo.SpecInfoVo specInfoVo);
 
     Boolean delete(Integer id);
 
-    Boolean deleteSpecInfo(Integer id);
+    Boolean deleteSpecInfo(String id);
 
-    Boolean update(Map<String,Object> map);
+    GoodsVo update(GoodsVo goodsVo);
 
-    Boolean updateSpecInfo(Map<String,Object> map);
+    GoodsVo updateSpecInfo(GoodsVo.SpecInfoVo specInfoVo);
 
-    Map<String,Object> query(Map<String,Object> map);
-    
 }

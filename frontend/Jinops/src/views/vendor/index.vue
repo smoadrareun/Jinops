@@ -77,14 +77,47 @@
     </symbol>
   </svg>
 
-  <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-     aria-controls="offcanvasExample">
-    使用链接的 href 属性
-  </a>
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-          aria-controls="offcanvasExample">
-    按钮中使用 data-bs-target
-  </button>
+  <nav class="navbar navbar-expand-md d-flex flex-wrap me-3 ms-3 mb-2 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-md-0 me-md-auto text-dark text-decoration-none ml-3 mr-3">
+      <svg class="bi me-2" width="40" height="32">
+        <use xlink:href="#bootstrap"/>
+      </svg>
+      <span class="fs-4">后台管理中心</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end mt-2 mb-1" id="collapsibleNavbar">
+      <ul class="navbar-nav nav-pills">
+        <li class="nav-item justify-content-center">
+          <button type="button" class="btn btn-success ms-2">
+            <i class="bi bi-house">前台首页</i>
+          </button>
+          <button type="button" class="btn btn-primary ms-2">
+            <i class="bi bi-trash">清除缓存</i>
+          </button>
+          <button type="button" class="btn btn-danger ms-2">
+            <i class="bi bi-power">退出登录</i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+       aria-controls="offcanvasExample">
+      <i class="bi bi-list"></i>
+    </a>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample">
+      <i class="bi bi-list"></i>
+    </button>
+  </div>
+
 
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">

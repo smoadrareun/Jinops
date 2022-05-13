@@ -20,7 +20,7 @@ public class IDUtil {
 
     //生成数字ID
     public static Integer getID(){
-        Integer uuid=UUID.randomUUID().toString().hashCode();
+        int uuid=UUID.randomUUID().toString().hashCode();
         uuid = uuid < 0 ? -uuid : uuid; //String.hashCode() 值可能为负数
         return uuid;
     }
@@ -32,7 +32,7 @@ public class IDUtil {
 
     //生成短UUID
     public static String getShortUUID() {
-        StringBuffer shortBuffer = new StringBuffer();
+        StringBuilder shortBuffer = new StringBuilder();
         String sUuid = getUUID();
         for (int i = 0; i < 8; i++) {
             String str = sUuid.substring(i * 4, i * 4 + 4);

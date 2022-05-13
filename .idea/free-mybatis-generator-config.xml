@@ -3,25 +3,141 @@
   <component name="PersistentConfig">
     <option name="historyConfigList">
       <map>
-        <entry key="addinfo">
+        <entry key="add_info">
           <value>
             <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
               <option name="daoName" value="AddInfoMapper" />
               <option name="daoPackage" value="com.hebeu.mapper" />
-              <option name="daoPostfix" value="AddInfoMapper" />
+              <option name="daoPostfix" value="Mapper" />
               <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
-              <option name="modelName" value="AddInfoModel" />
+              <option name="modelName" value="AddInfo" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="add_info" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="add_info" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="addinfo">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="AddinfoAddinfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="AddinfoAddinfoMapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="AddinfoModel" />
               <option name="modelPackage" value="com.hebeu.model" />
               <option name="name" value="addinfo" />
-              <option name="needToStringHashcodeEquals" value="true" />
+              <option name="needForUpdate" value="true" />
               <option name="offsetLimit" value="true" />
               <option name="overrideJava" value="true" />
               <option name="overrideXML" value="true" />
               <option name="primaryKey" value="id" />
               <option name="projectFolder" value="$PROJECT_DIR$" />
               <option name="tableName" value="addinfo" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="addr_info">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="AddrInfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="jsr310Support" value="true" />
+              <option name="modelMvnPath" value="backend/parent/manager/pojo/src/main/java" />
+              <option name="modelName" value="AddrInfo" />
+              <option name="modelPackage" value="com.hebeu.pojo" />
+              <option name="name" value="addr_info" />
+              <option name="needForUpdate" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="addr_info" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="areas">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="AreasMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Areas" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="areas" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="areas" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="cart">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="CartMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Cart" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="cart" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="cart" />
               <option name="useExample" value="true" />
               <option name="useLombokPlugin" value="true" />
               <option name="useSchemaPrefix" value="true" />
@@ -49,6 +165,440 @@
               <option name="primaryKey" value="id" />
               <option name="projectFolder" value="$PROJECT_DIR$" />
               <option name="tableName" value="client" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="com_info">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="ComInfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="ComInfo" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="com_info" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="com_info" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="cominfo">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="CominfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Cominfo" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="cominfo" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="cominfo" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="dist_info">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="DistInfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="DistInfo" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="dist_info" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="dist_info" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="distinfo">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="DistinfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Distinfo" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="distinfo" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="distinfo" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="goods">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="GoodsMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Goods" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="goods" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="goods" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="logs">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="LogsMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="jsr310Support" value="true" />
+              <option name="modelMvnPath" value="backend/parent/manager/pojo/src/main/java" />
+              <option name="modelName" value="Logs" />
+              <option name="modelPackage" value="com.hebeu.pojo" />
+              <option name="name" value="logs" />
+              <option name="needForUpdate" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="logs" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="LogsMapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="order">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="OrderMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Order" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="order" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="order" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="path">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="PathMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Path" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="path" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="path" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="role">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="RoleMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Role" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="role" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="role" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="role_path">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="RolePathMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="RolePath" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="role_path" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="rid" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="role_path" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="rule">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="RuleMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Rule" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="rule" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="venId" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="rule" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="spec_info">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="SpecInfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="SpecInfo" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="spec_info" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="spec_info" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="specinfo">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="SpecinfoMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Specinfo" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="specinfo" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="specinfo" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="store">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="StoreMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Store" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="store" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="store" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="backend/parent/manager/mapper/src/main/resources" />
+              <option name="xmlPackage" value="com.hebeu.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="vendor">
+          <value>
+            <Config>
+              <option name="annotation" value="true" />
+              <option name="annotationDAO" value="true" />
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="backend/parent/manager/mapper/src/main/java" />
+              <option name="daoName" value="VendorMapper" />
+              <option name="daoPackage" value="com.hebeu.mapper" />
+              <option name="daoPostfix" value="Mapper" />
+              <option name="modelMvnPath" value="backend/parent/manager/model/src/main/java" />
+              <option name="modelName" value="Vendor" />
+              <option name="modelPackage" value="com.hebeu.model" />
+              <option name="name" value="vendor" />
+              <option name="needForUpdate" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="vendor" />
               <option name="useExample" value="true" />
               <option name="useLombokPlugin" value="true" />
               <option name="useSchemaPrefix" value="true" />

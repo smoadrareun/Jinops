@@ -4,10 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
+ *
  * @ClassName: ResponseBody
  * @Author: Smoadrareun
  * @Description: TODO 封装响应的数据结构
@@ -17,12 +19,15 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 public class ResponseBody<T> implements Serializable {
-    //UUID
-    private String UUID = IDUtil.getUUID();
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+    //请求ID
+    private String requestID = IDUtil.getUUID();
     //时间
     private String date = DateUtil.getCurrentDateStr("yyyy-MM-dd HH:mm:ss");
     //状态码 默认为200
-    private Integer status=200;
+    private Integer status = 200;
     //信息码
     private Integer code;
     //详情信息
@@ -32,28 +37,28 @@ public class ResponseBody<T> implements Serializable {
 
     /**
      * 成功返回内容
-     * @Param [data]
-     * @return model.ResponseBody
+     *
+     * @return ResponseBody
+     * @Param [message, data]
      **/
 
-    @SuppressWarnings({"unchecked", "varargs"})
-    public <T> ResponseBody success(String message,T... data){
-        ResponseBody<T> resp=new ResponseBody<T>();
+    public ResponseBody<T> success(String message, T data) {
+        ResponseBody<T> resp = new ResponseBody<T>();
         resp.setCode(0);
         resp.setMessage(message);
-        if(data.length>0)
-            resp.setData(data[0]);
+        resp.setData(data);
         return resp;
     }
 
     /**
      * 失败/异常返回内容
-     * @Param [status, errorCode, message]
-     * @return model.ResponseBody
+     *
+     * @return ResponseBody
+     * @Param [errorCode, message]
      **/
 
-    public <T> ResponseBody failure(Integer errorCode,String message){
-        ResponseBody<T> resp=new ResponseBody<T>();
+    public ResponseBody<T> failure(Integer errorCode, String message) {
+        ResponseBody<T> resp = new ResponseBody<T>();
         resp.setCode(errorCode);
         resp.setMessage(message);
         return resp;

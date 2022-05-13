@@ -1,39 +1,38 @@
 package com.hebeu.service;
 
-import com.hebeu.model.OrderModel;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
+import com.hebeu.pojo.Order;
+import com.hebeu.pojo.vo.OrderVo;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @ClassName: OrderService
  * @Author: Smoadrareun
- * @Description: TODO 交易信息服务层接口
+ * @Description: TODO 客户信息服务层接口
  */
 
-public interface OrderService {
+public interface OrderService extends IService<Order> {
 
-    List<OrderModel> getList();
+    OrderVo getById(String id);
 
-    OrderModel getById(String id);
+    List<OrderVo> getList();
 
-    List<OrderModel> find(Map<String,Object> map);
+    PageInfo<OrderVo> select(OrderVo orderVo);
 
-    List<OrderModel> search(Map<String,Object> map);
+    OrderVo insert(OrderVo orderVo);
 
-    Map<String,Object> insert(Map<String,Object> map);
+    OrderVo insertComInfo(OrderVo.ComInfoVo comInfoVo);
 
-    Boolean insertComInfo(Map<String,Object> map);
-
-    Boolean delete(String id);
+    Boolean delete(Integer id);
 
     Boolean deleteComInfo(String id);
 
-    Boolean update(Map<String,Object> map);
+    OrderVo update(OrderVo orderVo);
 
-    Boolean updateComInfo(Map<String,Object> map);
+    OrderVo updateComInfo(OrderVo.ComInfoVo comInfoVo);
 
-    Map<String,Object> query(Map<String,Object> map);
 }

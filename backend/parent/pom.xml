@@ -34,12 +34,13 @@
         <!-- 依赖的版本号：在定义版本时，要注意的是不同的依赖版本之间会有影响，有些最新的版本不支持其他依赖的低版本一起使用-->
         <spring.cloud.version>Finchley.SR4</spring.cloud.version>
         <maven.plugin.version>1.3.0.RELEASE</maven.plugin.version>
+        <maven.jar.plugin.version>2.4</maven.jar.plugin.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
         <maven.assembly.plugin.version>3.0.0</maven.assembly.plugin.version>
-        <maven.jar.plugin.version>2.4</maven.jar.plugin.version>
 
         <spring.version>5.3.12</spring.version>
-        <spring.boot.version>2.6.4</spring.boot.version>
+        <spring.boot.version>2.6.7</spring.boot.version>
 
         <commons.lang3.version>3.12.0</commons.lang3.version>
         <commons.io.version>1.3.2</commons.io.version>
@@ -47,39 +48,46 @@
         <commons.codec.version>1.10</commons.codec.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
 
+        <dubbo.spring.boot.version>2.7.8</dubbo.spring.boot.version>
+        <mybatis.spring.boot.version>2.2.0</mybatis.spring.boot.version>
+        <mybatis.plus.boot.version>3.5.1</mybatis.plus.boot.version>
+        <pagehelper.version>5.3.0</pagehelper.version>
+        <jsqlparser.version>4.3</jsqlparser.version>
+        <pagehelper.spring.boot.version>1.4.1</pagehelper.spring.boot.version>
+        <druid.version>1.2.8</druid.version>
+        <druid.spring.boot.version>1.2.8</druid.spring.boot.version>
+
+        <lombok.version>1.18.22</lombok.version>
         <junit.version>4.13.2</junit.version>
         <aspectjweaver.version>1.9.7</aspectjweaver.version>
-        <lombok.version>1.18.22</lombok.version>
-
-        <mybatis.version>3.5.8</mybatis.version>
-        <mybatis.spring.version>2.0.6</mybatis.spring.version>
-        <mybatis.spring.boot.version>2.2.0</mybatis.spring.boot.version>
-        <mybatis.paginator.version>1.2.17</mybatis.paginator.version>
-
         <mysql.version>8.0.25</mysql.version>
-        <druid.version>1.2.8</druid.version>
+
         <hadoop.client.version>3.3.1</hadoop.client.version>
-        <joda.time.version>2.5</joda.time.version>
-
-        <jackson.version>2.12.5</jackson.version>
         <httpclient.version>4.5.13</httpclient.version>
-
         <jstl.version>1.2</jstl.version>
-        <servlet.api.version>2.5</servlet.api.version>
-        <jsp.api.version>2.0</jsp.api.version>
-        <pagehelper.version>5.3.0</pagehelper.version>
-        <jsqlparser.version>0.9.1</jsqlparser.version>
+        <javax.servlet.api.version>4.0.1</javax.servlet.api.version>
+        <jsp.api.version>2.3.3</jsp.api.version>
         <annotation.api.version>1.3.2</annotation.api.version>
 
-        <joda.time.version>2.10.13</joda.time.version>
+        <jackson.version>2.12.5</jackson.version>
         <fastjson.version>1.2.79</fastjson.version>
+        <gson.version>2.8.9</gson.version>
+        <joda.time.version>2.10.13</joda.time.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
         <persistence.api.version>1.0.2</persistence.api.version>
-        <gson.version>2.8.9</gson.version>
+        <logging.log4j.version>2.17.2</logging.log4j.version>
+        <log4j.version>1.2.17</log4j.version>
         <java.jwt.version>3.8.2</java.jwt.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
+        <tencentcloud.sdk.version>3.1.423</tencentcloud.sdk.version>
+        <shiro.core.version>1.4.1</shiro.core.version>
+        <zookeeper.version>3.8.0</zookeeper.version>
+        <curator.version>5.1.0</curator.version>
+        <fastdfs.client.version>1.27</fastdfs.client.version>
+        <minio.version>8.2.1</minio.version>
 
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <!-- 项目依赖项 -->
@@ -141,6 +149,14 @@
             <!-- Spring Boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
@@ -163,6 +179,7 @@
                 <version>${spring.boot.version}</version>
             </dependency>
 
+            <!-- 测试 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
@@ -170,13 +187,21 @@
                 <version>${spring.boot.version}</version>
             </dependency>
 
-<!--            &lt;!&ndash; redis &ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--                <version>${spring.boot.version}</version>-->
-<!--            </dependency>-->
+            <!-- JDBC -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jdbc</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
 
+            <!-- Redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- Tomcat -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-tomcat</artifactId>
@@ -191,12 +216,55 @@
                 <version>${spring.boot.version}</version>
             </dependency>
 
+            <!-- JPA注解 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- Hibernate-Validator -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- 发送邮件 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-mail</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- Spring Security -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- Spring AOP -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!-- RabbitMQ -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
             <!-- 热部署插件 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-devtools</artifactId>
-                <scope>runtime</scope>
                 <version>${spring.boot.version}</version>
+                <scope>runtime</scope>
+                <optional>true</optional>
             </dependency>
 
 <!--            &lt;!&ndash; Apache工具组件 &ndash;&gt;-->
@@ -232,57 +300,71 @@
 <!--                <version>${commons.codec.version}</version>-->
 <!--            </dependency>-->
 
-<!--            &lt;!&ndash; 添加junit4依赖 单元测试&ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>junit</groupId>-->
-<!--                <artifactId>junit</artifactId>-->
-<!--                <version>${junit.version}</version>-->
-<!--                <scope>test</scope>-->
-<!--            </dependency>-->
-
-<!--            &lt;!&ndash; 切面 &ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>org.aspectj</groupId>-->
-<!--                <artifactId>aspectjweaver</artifactId>-->
-<!--                <version>${aspectjweaver.version}</version>-->
-<!--            </dependency>-->
-
-            <!-- 简化Entity代码（实体类添加@Data，编译时为所有字段添加@ToString/@EqualsAndHashCode/@Getter/为非final字段添加@Setter） -->
+            <!-- Dubbo -->
             <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-            </dependency>
-
-            <!-- 添加mybatis依赖-->
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.spring.boot.version}</version>
             </dependency>
 
 <!--            <dependency>-->
-<!--                <groupId>org.mybatis</groupId>-->
-<!--                <artifactId>mybatis-spring</artifactId>-->
-<!--                <version>${mybatis.spring.version}</version>-->
+<!--                <groupId>org.apache.dubbo</groupId>-->
+<!--                <artifactId>dubbo-bom</artifactId>-->
+<!--                <version>${dubbo.spring.boot.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
 <!--            </dependency>-->
 
+<!--            &lt;!&ndash; Mybatis &ndash;&gt;-->
 <!--            <dependency>-->
-<!--                <groupId>com.github.miemiedev</groupId>-->
-<!--                <artifactId>mybatis-paginator</artifactId>-->
-<!--                <version>${mybatis.paginator.version}</version>-->
+<!--                <groupId>org.mybatis.spring.boot</groupId>-->
+<!--                <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--                <version>${mybatis.spring.boot.version}</version>-->
 <!--            </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>com.github.pagehelper</groupId>-->
-<!--                <artifactId>pagehelper</artifactId>-->
-<!--                <version>${pagehelper.version}</version>-->
-<!--            </dependency>-->
+            <!-- Mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.boot.version}</version>
+            </dependency>
+
+            <!-- 添加分页插件-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
 
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.spring.boot.version}</version>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>${jsqlparser.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-autoconfigure</artifactId>
+                <version>${pagehelper.spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.spring.boot.version}</version>
+            </dependency>
+
+            <!-- 添加数据库连接池依赖 -->
+            <!--            <dependency>-->
+            <!--                <groupId>com.alibaba</groupId>-->
+            <!--                <artifactId>druid</artifactId>-->
+            <!--                <version>${druid.version}</version>-->
+            <!--            </dependency>-->
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.spring.boot.version}</version>
             </dependency>
 
             <!-- 添加mysql驱动依赖 -->
@@ -293,12 +375,27 @@
                 <version>${mysql.version}</version>
             </dependency>
 
-            <!-- 添加数据库连接池依赖 -->
+            <!-- 简化Entity代码（实体类添加@Data，编译时为所有字段添加@ToString/@EqualsAndHashCode/@Getter/为非final字段添加@Setter） -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>${druid.version}</version>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
+
+            <!-- 添加junit4依赖 单元测试-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+<!--            &lt;!&ndash; 切面 &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>org.aspectj</groupId>-->
+<!--                <artifactId>aspectjweaver</artifactId>-->
+<!--                <version>${aspectjweaver.version}</version>-->
+<!--            </dependency>-->
 
 <!--            &lt;!&ndash; 添加HDFS依赖 &ndash;&gt;-->
 <!--            <dependency>-->
@@ -306,23 +403,6 @@
 <!--                <artifactId>hadoop-client</artifactId>-->
 <!--                <version>${hadoop.client.version}</version>-->
 <!--            </dependency>-->
-
-            <!-- Jackson Json处理工具包 -->
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
-            </dependency>
 
 <!--            &lt;!&ndash; httpclient &ndash;&gt;-->
 <!--            <dependency>-->
@@ -341,14 +421,14 @@
 
             <dependency>
                 <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.api.version}</version>
                 <scope>provided</scope>
-                <version>${servlet.api.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>jsp-api</artifactId>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>javax.servlet.jsp-api</artifactId>
                 <version>${jsp.api.version}</version>
             </dependency>
 
@@ -358,11 +438,23 @@
 <!--                <version>${annotation.api.version}</version>-->
 <!--            </dependency>-->
 
-            <!-- 在Java中处理日期和时间是很常见的需求，基础的工具类就是我们熟悉的Date和Calendar，然而这些工具类的api使用并不是很方便和强大，于是就诞生了Joda-Time这个专门处理日期时间的库。-->
+            <!-- Jackson Json处理工具包 -->
             <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time</artifactId>
-                <version>${joda.time.version}</version>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
 
             <!-- fastJson用于对JSON格式的数据进行解析和打包 -->
@@ -371,6 +463,22 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- 在Java中处理日期和时间是很常见的需求，基础的工具类就是我们熟悉的Date和Calendar，然而这些工具类的api使用并不是很方便和强大，于是就诞生了Joda-Time这个专门处理日期时间的库。-->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda.time.version}</version>
+            </dependency>
+
+
 
 <!--            &lt;!&ndash; 用于转换拼音，调用PinyinHelper类的静态工具方法 &ndash;&gt;-->
 <!--            <dependency>-->
@@ -386,18 +494,90 @@
 <!--                <version>${persistence.api.version}</version>-->
 <!--            </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>com.google.code.gson</groupId>-->
-<!--                <artifactId>gson</artifactId>-->
-<!--                <version>${gson.version}</version>-->
-<!--                <scope>compile</scope>-->
-<!--            </dependency>-->
+            <!-- 日志处理 -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${logging.log4j.version}</version>
+            </dependency>
 
-            <!--生成token-->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${logging.log4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+
+            <!-- 生成token -->
             <dependency>
                 <groupId>com.auth0</groupId>
                 <artifactId>java-jwt</artifactId>
                 <version>${java.jwt.version}</version>
+            </dependency>
+
+            <!-- 处理邮件 -->
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${javax.mail.version}</version>
+            </dependency>
+
+            <!-- 发送短信 -->
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java</artifactId>
+                <version>${tencentcloud.sdk.version}</version>
+            </dependency>
+
+            <!-- shiro权限管理 -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.core.version}</version>
+            </dependency>
+
+            <!-- Zookeeper -->
+<!--            <dependency>-->
+<!--                <groupId>org.apache.zookeeper</groupId>-->
+<!--                <artifactId>zookeeper</artifactId>-->
+<!--                <version>${zookeeper.version}</version>-->
+<!--            </dependency>-->
+
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-x-discovery</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+
+<!--            &lt;!&ndash; FastDFS &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>cn.bestwu</groupId>-->
+<!--                <artifactId>fastdfs-client-java</artifactId>-->
+<!--                <version>${fastdfs.client.version}</version>-->
+<!--            </dependency>-->
+
+            <!--minio-->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -412,6 +592,17 @@
 
     <build>
         <plugins>
+            <!-- 配置当前项目的jdk版本信息 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
             <!--打包跳过测试-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -422,43 +613,22 @@
                 </configuration>
             </plugin>
 <!--            <plugin>-->
-<!--                &lt;!&ndash; The plugin rewrites your manifest &ndash;&gt;-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                <version>${maven.plugin.version}</version>-->
-<!--                <configuration>&lt;!&ndash; 指定该Main Class为全局的唯一入口 &ndash;&gt;-->
-<!--                    <mainClass>com.hebeu.Application</mainClass>-->
-<!--                    <layout>ZIP</layout>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>${maven.jar.plugin.version}</version>-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            &lt;!&ndash; 告知 maven-jar-plugin添加一个 Class-Path元素到 MANIFEST.MF文件，以及在Class-Path元素中包括所有依赖项 &ndash;&gt;-->
+<!--                            <addClasspath>true</addClasspath>-->
+<!--                            &lt;!&ndash; 所有的依赖项应该位于 lib文件夹 &ndash;&gt;-->
+<!--                            <classpathPrefix>lib/</classpathPrefix>-->
+<!--                            &lt;!&ndash; 当用户使用 lib命令执行JAR文件时，使用该元素定义将要执行的类名 &ndash;&gt;-->
+<!--                            <mainClass>com.hebeu.Application</mainClass>-->
+<!--                        </manifest>-->
+<!--                    </archive>-->
 <!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>repackage</goal>&lt;!&ndash;可以把依赖的包都打包到生成的Jar包中&ndash;&gt;-->
-<!--                        </goals>-->
-<!--                        &lt;!&ndash;可以生成不含依赖包的不可执行Jar包&ndash;&gt;-->
-<!--                        &lt;!&ndash; configuration>-->
-<!--                          <classifier>exec</classifier>-->
-<!--                        </configuration> &ndash;&gt;-->
-<!--                    </execution>-->
-<!--                </executions>-->
 <!--            </plugin>-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <!-- 告知 maven-jar-plugin添加一个 Class-Path元素到 MANIFEST.MF文件，以及在Class-Path元素中包括所有依赖项 -->
-                            <addClasspath>true</addClasspath>
-                            <!-- 所有的依赖项应该位于 lib文件夹 -->
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <!-- 当用户使用 lib命令执行JAR文件时，使用该元素定义将要执行的类名 -->
-                            <mainClass>com.hebeu.Application</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>
