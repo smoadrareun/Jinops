@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="renderer" content="webkit">
+    <title>在线商城管理</title>
+    <link rel="stylesheet" href="../../static/css/pintuer.css">
+    <link rel="stylesheet" href="../../static/css/vendor/admin.css">
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/pintuer.js"></script>
+    <script src="../../static/js/respond.js"></script>
+    <script src="../../static/js/vendor/index.js"></script>
+</head>
+<body style="background-color:#f2f9fd;">
+<div class="navbar navbar-big bg-main bg-inverse radius">
+    <div class="navbar-head">
+        <button class="button bg-main icon-navicon float-right" data-target="#navbar-bg1"></button>
+        <div class="icon margin-left">
+                <img id="img" src="../../static/images/y.jpg" class="radius-circle rotate-hover margin-little-bottom" height="40" width="40" style="object-fit: cover;" alt=""/>&nbsp;
+                <span class="text-large">在线商城管理</span>
+                <span class="text-default">
+                    <strong>欢迎</strong>
+                    <span id="uname"></span>
+                    <input name="id" hidden="hidden"/>
+                </span>
+        </div>
+    </div>
+    <div class="navbar-body nav-navicon" id="navbar-bg1">
+        <div class="float-right padding">
+            <a class="button button bg-green" href="javascript:gotoBack();">
+                <span class="icon-home">&nbsp;</span>前台首页
+            </a> &nbsp;&nbsp;
+            <a href="javascript:gotoHome()" class="button button bg-blue">
+                <span class="icon-wrench">&nbsp;</span>清除缓存
+            </a> &nbsp;&nbsp;
+            <a class="button button bg-red" href="javascript:exit();">
+                <span class="icon-power-off">&nbsp;</span> 退出登录</a>
+        </div>
+    </div>
+</div>
+<div class="slidemenu">
+    <div class="slidemenu-left panel" style="width: 160px">
+        <div class="slidemenu-head panel-head bg-main">
+            <input id="leftnav" value="block" hidden="hidden">
+            <div class="panel-head bg-main">
+                <h4><strong><span class="icon-list">&nbsp;</span>菜单列表</strong></h4>
+            </div>
+        </div>
+        <div class="slidemenu-body panel-body">
+            <div class="collapse-toggle">
+                <div class="panel active">
+                    <div class="panel-head bg-main">
+                        <h4><span class="icon-users">&nbsp;</span>用户管理</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group" style="display:block">
+                            <li><a href="user.html" target="right"><span class="icon-caret-right"></span>个人信息</a></li>
+                            <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
+                            <li><a href="logout.html" target="right"><span class="icon-caret-right"></span>注销账号</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-head bg-main">
+                        <h4><span class="icon-cubes">&nbsp;</span>商品管理</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li><a href="list.html" target="right"><span class="icon-caret-right"></span>商品列表</a></li>
+                            <li><a href="order.html" target="right"><span class="icon-caret-right"></span>全部订单</a></li>
+<!--                            <li class="disabled"><a href="cate.html" target="right"><span class="icon-caret-right"></span>分类管理</a></li>-->
+<!--                            <li class="disabled"><a href="adv.html" target="right"><span class="icon-caret-right"></span>首页轮播</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-head bg-main">
+                        <h4><span class="icon-pencil">&nbsp;</span>后台管理</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li><a href="logs.html" target="right"><span class="icon-caret-right"></span>操作日志</a></li>
+                            <li><a href="../../static/log/spring.log" target="right"><span class="icon-caret-right"></span>项目日志</a></li>
+<!--                            <li><a href="info.html" target="right"><span class="icon-caret-right"></span>网站设置</a></li>-->
+<!--                            <li><a href="page.html" target="right"><span class="icon-caret-right"></span>单页管理</a></li>-->
+<!--                            <li><a href="book.html" target="right"><span class="icon-caret-right"></span>留言管理</a></li>-->
+<!--                            <li><a href="column.html" target="right"><span class="icon-caret-right"></span>栏目管理</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slidemenu-content" style="top:auto;">
+        <div class="slidemenu-head">
+            <span class="icon-slidemenu margin-top margin-big-left float-left" id="mybtn"></span>
+            <ul class="bread float-left">
+                <li><a href="javascript:gotoHome()" target="right" class="icon-home"> 首页</a></li>
+                <li><a href="##" id="a_leader_kind" target="right">&nbsp;用户管理</a></li>
+                <li><a href="##" id="a_leader_txt" target="right">个人信息</a></li>
+            </ul>
+        </div>
+        <div class="slidemenu-body">
+            <div class="admin radius-big">
+                <iframe scrolling="yes" rameborder="0" src="user.html" id="right" name="right" width="100%"
+                        height="100%"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

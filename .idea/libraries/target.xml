@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="target">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/backend/parent/manager/web/target/Jinops.jar!/" />
+      <root url="jar://$PROJECT_DIR$/backend/parent/manager/web/target/Jinops-exec.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

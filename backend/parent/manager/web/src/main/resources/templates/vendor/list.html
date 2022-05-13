@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/pintuer.css">
+    <link rel="stylesheet" href="../../static/css/vendor/admin.css">
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/pintuer.js"></script>
+    <script type="text/javascript" src="../../static/js/vendor/index.js"></script>
+</head>
+<body>
+<form method="post" action="" id="listform">
+    <div class="panel admin-panel">
+        <div class="panel-head"><strong class="icon-reorder"> 商品列表</strong>
+            <a href="" style="float:right; display:none;">添加字段</a>
+        </div>
+        <div class="padding border-bottom">
+            <div id="tips"></div>
+            <ul class="search padding-left">
+                <li><a class="button border-main icon-plus-square-o" href="add.html"> 添加商品</a></li>
+                <li>
+                    <strong>查询条件：</strong>
+                </li>
+                <li>
+                    名称：<input type="text" placeholder="请输入搜索关键字" name="sname" class="input margin-little-top"
+                              style="width:130px;display:inline-block"/>
+                </li>
+                <li>
+                    价格区间：<input type="text" name="min" class="input margin-little-top" placeholder="最低价"
+                                style="width:60px;display:inline-block" data-validate="regexp#^([0-9]*)+(\.[0-9])?([0-9])?$:"/>&nbsp;元-
+                    <input type="text" name="max" class="input margin-little-top" placeholder="最高价"
+                           style="width:60px;display:inline-block" data-validate="regexp#^([0-9]*)+(\.[0-9])?([0-9])?$:"/>&nbsp;元
+                </li>
+                <li>
+                    是否下架：
+                    <select name="off" class="input" style="width:80px;display:inline-block">
+                        <option value="0">全部</option>
+                        <option value="1">未下架</option>
+                        <option value="2">已下架</option>
+                    </select>
+                </li>
+                <li>
+                    排序方式：
+                    <select name="sort" class="input" style="width:90px;display:inline-block">
+                        <option value="0">默认排序</option>
+                        <option value="1">价格升序</option>
+                        <option value="2">价格降序</option>
+                        <option value="3">销量升序</option>
+                        <option value="4">销量降序</option>
+                    </select>
+                </li>
+                <li>
+                    每页显示：
+                    <select name="count" class="input" style="width:90px;display:inline-block">
+                        <option value="5">每页5条</option>
+                        <option value="10">每页10条</option>
+                        <option value="15">每页15条</option>
+                        <option value="20">每页20条</option>
+                        <option value="">显示全部</option>
+                    </select>
+                </li>
+                <li>
+                    <button type="button" class="button border-main icon-search" id="query">
+                        查询
+                    </button>
+                    <button type="button" class="button border-dot icon-trash-o" id="clean">
+                        清空
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <table class="table table-hover text-center">
+            <tr>
+                <th></th>
+                <th>商品图片</th>
+                <th>商品名称</th>
+                <th>商品价格</th>
+                <th>商品数量</th>
+                <th>商品销量</th>
+                <th>商品介绍</th>
+                <th>是否下架</th>
+                <th>操作</th>
+            </tr>
+            <tbody id="vo">
+            </tbody>
+        </table>
+        <div class="padding border-bottom">
+            <ul class="search padding-left padding-bottom border-bottom">
+                <div class="button-group">
+                    <button type="button" class="button border-main icon-check-circle" id="checkall">
+                        全选
+                    </button>
+                    <button type="button" class="button border-main icon-circle-o" id="checknone">
+                        全不选
+                    </button>
+                    <button type="button" class="button border-main icon-check-circle-o" id="inverse">
+                        反选
+                    </button>
+                </div>
+                <div class="button-group margin-left">
+                    <button type="button" class="button border-dot icon-trash-o" id="deletes">
+                        批量删除
+                    </button>
+                </div>
+            </ul>
+            <ul class="search padding-left padding-top">
+                <input name="page" value="1" hidden="hidden"/>
+                <div class="pagelist" id="pageList">
+
+                </div>
+            </ul>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    $(function () {
+        var success = "<div class=\"form-group animated bounce\">\n" +
+            "                    <div class=\"alert alert-green\">\n" +
+            "                        <span class=\"close rotate-hover\"></span><strong>恭喜：</strong>操作成功。\n" +
+            "                    </div>\n" +
+            "                </div>";
+
+        var failure = "<div class=\"form-group animated bounce\">\n" +
+            "                                            <div class=\"alert alert-yellow\">\n" +
+            "                                                <span class=\"close rotate-hover\"></span><strong>操作失败</strong>\n" +
+            "                                                <p>\n" +
+            "                                                    请重新操作。\n" +
+            "                                                </p>\n" +
+            "                                            </div>";
+
+        var error = "<div class=\"form-group animated bounce\">\n" +
+            "                                            <div class=\"alert alert-red\">\n" +
+            "                                                <span class=\"close rotate-hover\"></span><strong>访问异常</strong>\n" +
+            "                                                <p>\n" +
+            "                                                    请稍后重试。\n" +
+            "                                                </p>\n" +
+            "                                            </div>";
+
+        function getWarning(str) {
+            return "<div class=\"form-group animated bounce\">\n" +
+                "                                            <div class=\"alert alert-yellow\">\n" +
+                "                                                <span class=\"close rotate-hover\"></span><strong>注意：</strong>" + str + "\n" +
+                "                                            </div>\n" +
+                "                                        </div>";
+        }
+
+        function getTips(str) {
+            return "<div class=\"form-group animated bounce\">\n" +
+                "                                            <div class=\"alert alert-blue\">\n" +
+                "                                                <span class=\"close rotate-hover\"></span><strong>提示：</strong>" + str + "\n" +
+                "                                            </div>\n" +
+                "                                        </div>";
+        }
+
+        queryList();
+
+        //搜索
+        function queryList(input) {
+            var adata = {
+                sname: $("input[name='sname']").val(),
+                min: $("input[name='min']").val(),
+                max: $("input[name='max']").val(),
+                sort: $("select[name='sort']").val(),
+                off: $("select[name='off']").val(),
+                count: $("select[name='count']").val(),
+                page: $("input[name='page']").val(),
+            };
+            var data = JSON.stringify(adata);
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                data: data,
+                async: false,
+                url: window.location.origin + "/Jinops/goods/query",
+                beforeSend:function(){
+                    window.scrollTo('0', '0');
+                    $("#tips").html(getTips("加载中，请稍后")).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                },
+                success: function (data) {
+                    if (data.code === 0) {
+                        $("#vo").empty();
+                        for (var i = data.data.goods.length - 1; i >= 0; i--) {
+                            var str = "<tr><td><input type=\"checkbox\" name=\"id[]\" value=\"" + data.data.goods[i].id + "\"/>\n" +
+                                "                    </td>\n" +
+                                "                    <td><img src=\"" + data.data.goods[i].pic + "\" alt=\"\" width=\"50\" height=\"50\"/></td>\n" +
+                                "                    <td>" + data.data.goods[i].name + "</td>\n" +
+                                "                    <td>" + data.data.goods[i].price.toFixed(2) + "</td>\n" +
+                                "                    <td>" + data.data.goods[i].num + "</td>\n" +
+                                "                    <td>" + data.data.goods[i].sold + "</td>\n" +
+                                "                    <td>" + data.data.goods[i].info + "</td>\n" +
+                                "                    <td>" + (data.data.goods[i].off? "是":"否") + "</td>\n" +
+                                "                    <td>\n" +
+                                "                        <div class=\"button-group\">\n" +
+                                "                           <button type=\"button\" class=\"button border-sub icon-edit\" \n" +
+                                "                               name=\"edit\" value=\"" + data.data.goods[i].id + "\">修改</input>\n" +
+                                "                           <button type=\"button\" class=\"button border-dot icon-trash-o\" \n" +
+                                "                               name=\"delete\" value=\"" + data.data.goods[i].id + "\">删除</input>\n" +
+                                "                           </div>\n" +
+                                "                    </td>\n" +
+                                "                </tr>";
+                            $("#vo").prepend(str);
+                        }
+                        $("#pageList").empty();
+                        var str="";
+                        if(data.data.page>1) {
+                            str +=  "<div class=\"button-group\">\n" +
+                                "                <button type=\"button\" class=\"button border-sub\" name=\"firstPage\">\n" +
+                                "                    首页\n" +
+                                "                </button>\n" +
+                                "                <button type=\"button\" class=\"button border-sub\" name=\"prevPage\">\n" +
+                                "                    上一页\n" +
+                                "                </button>\n" +
+                                "           </div>\n";
+                        }else{
+                            str +=  "<div class=\"button-group\">\n" +
+                                "                <button type=\"button\" class=\"button border-sub\"" +
+                                "                       name=\"firstPage\" disabled=\"disabled\">\n" +
+                                "                    首页\n" +
+                                "                </button>\n" +
+                                "                <button type=\"button\" class=\"button border-sub\"" +
+                                "                       name=\"prevPage\" disabled=\"disabled\">\n" +
+                                "                    上一页\n" +
+                                "                </button>\n" +
+                                "           </div>\n";
+                        }
+                        str+= "         <div class=\"button-group\">\n" +
+                            "                <button type=\"button\" class=\"button bg-sub\" name=\"thisPage\">\n" +
+                            "                    <input name=\"page\" hidden=\"hidden\" value='"+data.data.page+"'/>\n" +
+                            "                    <input name=\"totalPage\" hidden=\"hidden\" value='"+data.data.totalPage+"'/>\n" +
+                            "                    第"+data.data.page+"页,共"+data.data.totalPage+"页\n" +
+                            "                </button>\n" +
+                            "           </div>\n";
+                        if(data.data.page<data.data.totalPage){
+                            str+= "         <div class=\"button-group\">\n" +
+                                "                <button type=\"button\" class=\"button border-sub\" name=\"nextPage\">\n" +
+                                "                    下一页\n" +
+                                "                </button>\n" +
+                                "                <button type=\"button\" class=\"button border-sub\" name=\"lastPage\">\n" +
+                                "                    尾页\n" +
+                                "                </button>\n" +
+                                "           </div>\n";
+                        }else{
+                            str+= "         <div class=\"button-group\">\n" +
+                                "                <button type=\"button\" class=\"button border-sub\"" +
+                                "                        name=\"nextPage\" disabled=\"disabled\">\n" +
+                                "                    下一页\n" +
+                                "                </button>\n" +
+                                "                <button type=\"button\" class=\"button border-sub\"" +
+                                "                        name=\"lastPage\" disabled=\"disabled\">\n" +
+                                "                    尾页\n" +
+                                "                </button>\n" +
+                                "           </div>\n";
+                        }
+                        $("#pageList").prepend(str);
+                        $("input[name='page']").val(data.data.page);
+
+                        //跳转到首页
+                        $("button[name='firstPage']").on("click",function (){
+                            $("input[name='page']").val(1);
+                            queryList();
+                        })
+
+                        //跳转到上一页
+                        $("button[name='prevPage']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='page']").val())-1);
+                            queryList();
+                        })
+
+                        //上一页
+                        $("button[name='prev']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='page']").val())-1);
+                            queryList();
+                        })
+
+                        //下一页
+                        $("button[name='next']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='page']").val())+1);
+                            queryList();
+                        })
+
+                        //跳转到下一页
+                        $("button[name='nextPage']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='page']").val())+1);
+                            queryList();
+                        })
+
+                        //跳转到尾页
+                        $("button[name='lastPage']").on("click",function (){
+                            $("input[name='page']").val(parseInt($("input[name='totalPage']").val()));
+                            queryList();
+                        })
+
+                        //删除
+                        $("button[name='delete']").on("click",function (){
+                            if (confirm("确定要删除此项吗？")) {
+                                del(this.value);
+                            }
+                        })
+
+                        //修改
+                        $("button[name='edit']").on("click",function (){
+                            window.location.href = "edit.html?id=" + this.value;
+                        })
+                        if(input!==null&&input!==undefined){
+                            window.scrollTo('0', '0');
+                            $("#tips").html(success).on("click", ".close", function () {
+                                $(this).parent().parent().remove();
+                            });
+                        }
+                    }
+                    if (data.code === -404) {
+                        $("#vo").empty();
+                        $("#pageList").empty();
+                        window.scrollTo('0', '0');
+                        $("#tips").html(getWarning("暂未找到商品数据")).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                    if (data.code === -1) {
+                        window.scrollTo('0', '0');
+                        $("#tips").html(failure).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                },
+                complete:function(){
+                    $("#tips").html("");
+                },
+                error: function (e) {
+                    console.log(e);
+                    window.scrollTo('0', '0');
+                    $("#tips").html(error).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                }
+            })
+        }
+
+        //删除
+        function del(id) {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                async: false,
+                url: window.location.origin + "/Jinops/goods/delete/" + id,
+                success: function (data) {
+                    if (data.code === 0) {
+                        $("input[name='id[]']").each(function () {
+                            if (this.value === id) {
+                                $(this).parent().parent().remove();
+                            }
+                        });
+                        window.scrollTo('0', '0');
+                        $("#tips").html(success).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                    if (data.code === -404) {
+                        window.scrollTo('0', '0');
+                        $("#tips").html(getWarning("删除的商品不存在")).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                    if (data.code === -1) {
+                        window.scrollTo('0', '0');
+                        $("#tips").html(failure).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                },
+                error: function (e) {
+                    console.log(e);
+                    window.scrollTo('0', '0');
+                    $("#tips").html(error).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                }
+            })
+        }
+
+        //查询
+        $("#query").click(function () {
+            $("input[name='page']").val(1);
+            queryList(1);
+        })
+
+        //清空
+        $("#clean").click(function () {
+            if (confirm("您确定要清空所有查询的条件吗？")) {
+                $("input[name='sname']").val("");
+                $("input[name='min']").val("");
+                $("input[name='max']").val("");
+                $("select[name='sort']").val("0");
+                $("select[name='count']").val("5");
+                queryList(1);
+            }
+        })
+
+        //全选
+        $("#checkall").click(function () {
+            $("input[name='id[]']").each(function () {
+                this.checked = true;
+            });
+        })
+
+        //全不选
+        $("#checknone").click(function () {
+            $("input[name='id[]']").each(function () {
+                this.checked = false;
+            });
+        })
+
+        //反选
+        $("#inverse").click(function () {
+            $("input[name='id[]']").each(function () {
+                if (this.checked) {
+                    this.checked = false;
+                } else {
+                    this.checked = true;
+                }
+            });
+        })
+
+        //批量删除
+        $("#deletes").click(function () {
+            var Checkbox = 0;
+            $("input[name='id[]']").each(function () {
+                if (this.checked === true) {
+                    Checkbox++;
+                }
+            });
+            if (Checkbox>0) {
+                if (confirm("您确定要删除选中"+Checkbox+"件商品吗？")) {
+                    $("input[name='id[]']").each(function () {
+                        if (this.checked === true) {
+                            del(this.value);
+                        }
+                    });
+                }
+            } else {
+                window.scrollTo('0', '0');
+                $("#tips").html(getTips("请先选择要删除的内容")).on("click", ".close", function () {
+                    $(this).parent().parent().remove();
+                });
+            }
+        })
+
+    })
+
+</script>
+</body>
+</html>

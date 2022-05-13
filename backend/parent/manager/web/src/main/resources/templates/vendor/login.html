@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>在线商城管理登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="../../static/css/pintuer.css">
+    <link rel="stylesheet" href="../../static/css/vendor/admin.css">
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/pintuer.js"></script>
+    <script src="../../static/js/respond.js"></script>
+    <script src="../../static/js/md5.js"></script>
+    <script src="../../static/js/vendor/admin.js"></script>
+</head>
+<body style="background: url('../../static/images/bg.jpg')">
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            <div class="media media-y margin-big-bottom">
+            </div>
+            <form id="loginForm" action="javascript:login()" method="post">
+                <div class="panel loginbox" style="backdrop-filter: blur(16px);translateY(-50%);">
+                    <div class="text-center padding-large-top padding-bottom"><h1>在线商城管理登录</h1></div>
+                    <div class="panel-body padding-large-left padding-large-right">
+                        <div id="tips"></div>
+                        <div class="form-group">
+                            <div class="label">
+                                <label>用户名</label>
+                            </div>
+                            <div class="field field-icon">
+                                <span class="icon icon-user margin-small"></span>
+                                <input type="text" class="input input-big" name="username" size="30"
+                                       placeholder="请输入用户名"
+                                       data-validate="required:输入的用户名不能为空,length#>=6:用户名的长度不能少于6位,length#<=16:用户名的长度不能多于16位"/>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group" id="passwd">
+                            <div class="label">
+                                <label>密码</label>
+                            </div>
+                            <div class="field field-icon">
+                                <span class="icon icon-key margin-small"></span>
+                                <input type="password" class="input input-big" name="password" size="30"
+                                       placeholder="请输入密码"
+                                       data-validate="required:输入的密码不能为空,length#>=6:密码的长度不能少于6位,length#<=16:密码的长度不能多于16位"/>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group hidden" id="keys">
+                            <div class="label">
+                                <label>管理员口令</label>
+                            </div>
+                            <div class="field field-icon">
+                                <span class="icon icon-key margin-small"></span>
+                                <input type="password" class="input input-big" name="keys" size="30"
+                                       placeholder="请输入口令" data-validate="required:输入的口令不能为空"/>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="label">
+                                <label>
+                                    验证码</label>
+                            </div>
+                            <div class="field">
+                                <div class="input-group">
+                                    <div class="field field-icon">
+                                        <span class="icon icon-check-circle-o margin-small"></span>
+                                        <input type="text" class="input input-big" name="code" size="50"
+                                               placeholder="请输入验证码"
+                                               data-validate="required:输入的验证码不能为空,length#==4:请输入4位长度的验证码"/>
+                                        <span class="addbtn">
+                                            <img id="image" alt="验证码" title="点击刷新" width="100" height="32"
+                                                 class="passcode"
+                                                 style="height:43px;cursor:pointer;" onclick="getValCode();">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group padding-large-left padding-large-right">
+                        <div class="field">
+                            <label class="float-left text-default padding-little-top">
+                                <input name="remember" type="checkbox">自动登录
+                            </label>
+                            <p class="text-default float-right">
+                                <a class="" href="javascript:gotoRe();" id="forget">忘记密码了？</a> |
+                                <a class="" href="javascript:gotoReg();">注册新账号</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="padding-large">
+                        <div class="padding-small-top">
+                            <input id="login" type="submit" class="button button-block bg-main text-big input-big"
+                                   value="登录"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

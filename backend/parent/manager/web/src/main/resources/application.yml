@@ -1,0 +1,163 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+    max-http-form-post-size: -1
+    max-swallow-size: -1
+#spring
+spring:
+  #mysql配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/jinops?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&allowMultiQueries=true
+    username: root
+    password: 183461
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    tomcat:
+      #连接池初始化大小
+      initial-size: 5
+      #连接池中的最小空闲连接
+      min-idle: 5
+      #连接池最大连接数
+      max-active: 50
+      # 获取连接等待超时的时间
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+  #redis配置
+  redis:
+#    # Redis单机环境配置 主从配置与单机相同
+#    host: localhost
+#    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password: 183461
+    # 连接哪个数据库
+    database: 0
+    # 启用SSL终端识别
+    ssl: false
+    #redis 集群环境配置
+    cluster:
+      nodes: localhost:9001,localhost:9002,localhost:9003,localhost:9004,localhost:9005,localhost:9006
+      # 设置命令的执行时间，如果超过这个时间，则报错
+      commandTimeout: 5000
+      # 获取失败 最大重定向次数
+      max-redirects: 3
+#        # 配置哨兵
+#        sentinel:
+#          nodes: # 节点
+#          master: # 主
+    jedis:
+      pool:
+        #连接池最大连接数（使用负值表示没有限制）
+        max-active: 200
+        #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+        #连接池中的最大空闲连接
+        max-idle: 10
+        #连接池中的最小空闲连接
+        min-idle: 0
+      #连接超时时间（毫秒）
+      timeout: 1000
+  #thymeleaf配置
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    servlet:
+      content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML
+  #hiddenMethod过滤器
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  #热部署
+  devtools:
+    restart:
+      enabled: true
+      #设置重启的目录
+      additional-paths: src/main/java
+      #classpath目录下的WEB-INF文件夹内容修改不重启
+      exclude: WEB-INF/**
+  #传参大小无限制
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  #分页
+  pagehelper:
+    helper-dialect: mysql
+    reasonable: true
+    support-methods-arguments: true
+  #切面
+  aop:
+    proxy-target-class: true
+  #邮件
+  mail:
+    #配置SMTP服务器地址
+    host: smtp.qq.com
+    #发送者邮箱
+    username: 1751271104@qq.com
+    #配置密码，注意不是真正的密码，而是刚刚申请到的授权码
+    password: xvfrkkxvesnzdhac
+    #端口号465或587
+    port: 587
+    #默认的邮件编码为UTF-8
+    default-encoding: UTF-8
+    #配置SSL加密工厂
+    properties:
+      mail:
+        smtp:
+          #设置TLS认证
+          starttls:
+              required: true
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+mybatis:
+  #配置映射文件
+  mapper-locations: classpath:com/hebeu/mapper/*.xml
+  #配置实体类
+  type-aliases-package: com.hebeu.pojo
+  configuration:
+#    #延迟加载
+#    lazy-loading-enabled: true
+#    #开启按需加载
+#    aggressive-lazy-loading: false
+    #打印sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  file:
+    path: backend/parent/manager/controller/src/main/resources/static/log
+  level:
+    root: info #日志级别 root表示所有包，也可以单独配置具体包 fatal error warn info debug trace off
+dubbo:
+  # dubbo应用名称
+  application:
+    name: Jinops-provider
+  registry:
+    address: zookeeper://localhost:2181?backup=localhost:2182,localhost:2183
+  protocol:
+    # dubbo协议名称
+    name: dubbo
+    # dubbo协议端口，默认20880
+    port: 20880
+    threads: 300
+    threadpool: fixed
+  # 连接注册中心的超时时间：单位是毫秒
+  config-center:
+    timeout: 20000
+  # 扫描指定包，将使用@DubboService注解修饰的类发布为服务
+  scan:
+    base-packages: com.hebeu.service
+tencent:
+  sms:
+    secretId: AKIDHOFp78sLXS7UaPxEExOffNoztVquhDRO
+    secretKey: i9IAm7ByUjhNmvmMegRu61h6E5fyzjDP
+    smsSdkAppId: 1400661737
+    templateId: 1363552
+    signName: 课设技巧

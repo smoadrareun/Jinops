@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="renderer" content="webkit">
+    <title></title>
+    <link rel="stylesheet" href="../../static/css/pintuer.css">
+    <link rel="stylesheet" href="../../static/css/vendor/admin.css">
+    <script src="../../static/js/jquery.js"></script>
+    <script src="../../static/js/pintuer.js"></script>
+    <script src="../../static/js/echarts.js"></script>
+    <script type="text/javascript" src="../../static/js/vendor/index.js"></script>
+</head>
+<body>
+<form method="post" action="" id="listform">
+    <div class="panel admin-panel">
+        <div class="panel-head"><strong class="icon-reorder"> 操作日志</strong>
+            <a href="" style="float:right; display:none;">添加字段</a>
+        </div>
+        <div class="padding border-bottom">
+            <div id="tips"></div>
+            <ul class="search padding-left">
+                <li><a class="button border-blue" href="logs.html">列表展示</a></li>
+                <li>
+                    <strong>展示方式：</strong>
+                    <label>
+                        <select name="kind" class="input" style="width:150px;display:inline-block">
+                            <option value="1" selected>展示全部</option>
+                            <option value="2">管理员类</option>
+                            <option value="3">商品类</option>
+                            <option value="4">客户类</option>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <button type="button" class="button border-main" id="query">
+                        切换
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div id="main" style="width: 100%;height: 500px" class="border">
+
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    $(function () {
+        var success = "<div class=\"form-group animated bounce\">\n" +
+            "                    <div class=\"alert alert-green\">\n" +
+            "                        <span class=\"close rotate-hover\"></span><strong>恭喜：</strong>操作成功。\n" +
+            "                    </div>\n" +
+            "                </div>";
+
+        var failure = "<div class=\"form-group animated bounce\">\n" +
+            "                                            <div class=\"alert alert-yellow\">\n" +
+            "                                                <span class=\"close rotate-hover\"></span><strong>操作失败</strong>\n" +
+            "                                                <p>\n" +
+            "                                                    请重新操作。\n" +
+            "                                                </p>\n" +
+            "                                            </div>";
+
+        var error = "<div class=\"form-group animated bounce\">\n" +
+            "                                            <div class=\"alert alert-red\">\n" +
+            "                                                <span class=\"close rotate-hover\"></span><strong>访问异常</strong>\n" +
+            "                                                <p>\n" +
+            "                                                    请稍后重试。\n" +
+            "                                                </p>\n" +
+            "                                            </div>";
+
+        function getWarning(str) {
+            return "<div class=\"form-group animated bounce\">\n" +
+                "                                            <div class=\"alert alert-yellow\">\n" +
+                "                                                <span class=\"close rotate-hover\"></span><strong>注意：</strong>" + str + "\n" +
+                "                                            </div>\n" +
+                "                                        </div>";
+        }
+
+        function getTips(str) {
+            return "<div class=\"form-group animated bounce\">\n" +
+                "                                            <div class=\"alert alert-blue\">\n" +
+                "                                                <span class=\"close rotate-hover\"></span><strong>提示：</strong>" + str + "\n" +
+                "                                            </div>\n" +
+                "                                        </div>";
+        }
+
+        queryList();
+
+        //搜索
+        function queryList() {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                async: false,
+                url: window.location.origin + "/Jinops/logs/kind/"+$("select[name='kind']").val(),
+                beforeSend:function(XMLHttpRequest){
+                    window.scrollTo('0', '0');
+                    $("#tips").html(getTips("加载中，请稍后")).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                },
+                success: function (data) {
+                    if (data.code === 0) {
+
+                        var myChart = echarts.init(document.getElementById('main'));
+
+                        var datas = [data.data];
+
+                        var option = {
+                            title: {
+                                text: '操作日志请求分布情况',
+                                top: 10,
+                                left: 'center',
+                                textStyle: {
+                                    color: '#999',
+                                    fontWeight: 'normal',
+                                    fontSize: 18
+                                }
+                            },
+                            series: datas.map(function (data, idx) {
+                                var top = idx * 50;
+                                return {
+                                    type: 'pie',
+                                    radius: [75, 150],
+                                    top: top + '%',
+                                    height: 550,
+                                    left: 'center',
+                                    width: '50%',
+                                    itemStyle: {
+                                        borderColor: '#fff',
+                                        borderWidth: 1
+                                    },
+                                    label: {
+                                        alignTo: 'edge',
+                                        formatter: '{name|{b}}\n\n{time|{c} 次}',
+                                        minMargin: 5,
+                                        edgeDistance: 10,
+                                        lineHeight: 15,
+                                        rich: {
+                                            time: {
+                                                fontSize: 14,
+                                                color: '#999'
+                                            }
+                                        }
+                                    },
+                                    labelLine: {
+                                        length: 15,
+                                        length2: 0,
+                                        maxSurfaceAngle: 80
+                                    },
+                                    labelLayout: function (params) {
+                                        const isLeft = params.labelRect.x < myChart.getWidth() / 2;
+                                        const points = params.labelLinePoints;
+                                        // Update the end point.
+                                        points[2][0] = isLeft
+                                            ? params.labelRect.x
+                                            : params.labelRect.x + params.labelRect.width;
+                                        return {
+                                            labelLinePoints: points
+                                        };
+                                    },
+                                    data: data
+                                };
+                            })
+                        };
+
+                        myChart.setOption(option);
+                    }
+                    if (data.code === -404) {
+                        $("#main").empty();
+                        window.scrollTo('0', '0');
+                        $("#tips").html(getWarning("暂未找到订单数据")).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                    if (data.code === -1) {
+                        window.scrollTo('0', '0');
+                        $("#tips").html(failure).on("click", ".close", function () {
+                            $(this).parent().parent().remove();
+                        });
+                    }
+                },
+                complete:function(XMLHttpRequest){
+                    $("#tips").html("");
+                },
+                error: function (e) {
+                    console.log(e);
+                    window.scrollTo('0', '0');
+                    $("#tips").html(error).on("click", ".close", function () {
+                        $(this).parent().parent().remove();
+                    });
+                }
+            })
+        }
+
+
+        //请求
+        $("#query").click(function () {
+            $("input[name='page']").val(1);
+            queryList(1);
+        })
+
+    })
+
+</script>
+</body>
+</html>
